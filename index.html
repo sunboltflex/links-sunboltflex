@@ -33,7 +33,7 @@
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       text-align: center;
-      max-width: 480px;
+      max-width: 520px;
       width: 100%;
     }
 
@@ -67,23 +67,38 @@
       padding-bottom: 5px;
     }
 
-    .links a {
-      display: block;
+    .link-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: linear-gradient(to right, var(--verde-gradiente-inicio), var(--verde-gradiente-fim));
-      color: var(--preto); /* texto preto */
-      text-decoration: none;
-      padding: 14px 22px;
-      margin: 12px 0;
+      padding: 12px 16px;
+      margin: 10px 0;
       border-radius: 12px;
-      font-size: 15px;
-      font-weight: 500;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
 
-    .links a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    .link-group a {
+      color: var(--preto);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      flex: 1;
+      text-align: left;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--verde-escuro);
+      padding-left: 10px;
+      transition: color 0.2s;
+    }
+
+    .copy-btn:hover {
+      color: #2e7d32;
     }
 
     footer {
@@ -93,13 +108,15 @@
     }
 
     @media (max-width: 500px) {
-      h1 {
-        font-size: 20px;
+      .link-group {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .links a {
-        font-size: 14px;
-        padding: 12px 16px;
+      .copy-btn {
+        padding-left: 0;
+        margin-top: 5px;
+        align-self: flex-end;
       }
     }
   </style>
@@ -113,24 +130,60 @@
     <!-- Seção Cadastros -->
     <h2 class="section-title">📋 Cadastros</h2>
     <div class="links">
-      <a href="https://forms.gle/x1ACmqLZTRzNP8ZH8" target="_blank">Cadastro de Clientes (15% a 20%)</a>
-      <a href="https://forms.gle/waLHTt6Ps1CEyJkU6" target="_blank">Cadastro de Clientes (25%)</a>
-      <a href="https://forms.gle/HnehrXA6AzY8tNuu6" target="_blank">Cadastro de Usinas</a>
+      <div class="link-group">
+        <a href="https://forms.gle/x1ACmqLZTRzNP8ZH8" target="_blank">Cadastro de Clientes (15% a 20%)</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/x1ACmqLZTRzNP8ZH8')">📋</button>
+      </div>
+      <div class="link-group">
+        <a href="https://forms.gle/waLHTt6Ps1CEyJkU6" target="_blank">Cadastro de Clientes (25%)</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/waLHTt6Ps1CEyJkU6')">📋</button>
+      </div>
+      <div class="link-group">
+        <a href="https://forms.gle/HnehrXA6AzY8tNuu6" target="_blank">Cadastro de Usinas</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/HnehrXA6AzY8tNuu6')">📋</button>
+      </div>
     </div>
 
     <!-- Seção Vendedores -->
     <h2 class="section-title">👨‍💼 Vendedores</h2>
     <div class="links">
-      <a href="https://forms.gle/wByNg74Fn6xMuyFb9" target="_blank">Denis</a>
-      <a href="https://forms.gle/T2BUixaqmfeRuN5B8" target="_blank">Luan</a>
-      <a href="https://forms.gle/24QAtQ4rWqdQYGEW6" target="_blank">Edilson</a>
-      <a href="https://forms.gle/AUPEafG4n1zGEbHQ8" target="_blank">Flávio</a>
-      <a href="https://forms.gle/zgAhvNk1YHDmD4Fh8" target="_blank">Janaina Carla</a>
+      <div class="link-group">
+        <a href="https://forms.gle/wByNg74Fn6xMuyFb9" target="_blank">Denis</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/wByNg74Fn6xMuyFb9')">📋</button>
+      </div>
+      <div class="link-group">
+        <a href="https://forms.gle/T2BUixaqmfeRuN5B8" target="_blank">Luan</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/T2BUixaqmfeRuN5B8')">📋</button>
+      </div>
+      <div class="link-group">
+        <a href="https://forms.gle/24QAtQ4rWqdQYGEW6" target="_blank">Edilson</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/24QAtQ4rWqdQYGEW6')">📋</button>
+      </div>
+      <div class="link-group">
+        <a href="https://forms.gle/AUPEafG4n1zGEbHQ8" target="_blank">Flávio</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/AUPEafG4n1zGEbHQ8')">📋</button>
+      </div>
+      <div class="link-group">
+        <a href="https://forms.gle/zgAhvNk1YHDmD4Fh8" target="_blank">Janaina Carla</a>
+        <button class="copy-btn" onclick="copiarLink(this, 'https://forms.gle/zgAhvNk1YHDmD4Fh8')">📋</button>
+      </div>
     </div>
 
     <footer>
       © 2025 - Sunbolt Flex
     </footer>
   </div>
+
+  <script>
+    function copiarLink(botao, link) {
+      navigator.clipboard.writeText(link).then(() => {
+        const textoOriginal = botao.innerHTML;
+        botao.innerHTML = '✅';
+        setTimeout(() => {
+          botao.innerHTML = textoOriginal;
+        }, 1500);
+      });
+    }
+  </script>
 </body>
 </html>
