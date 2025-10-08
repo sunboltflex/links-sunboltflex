@@ -3,13 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meus Links</title>
+  <title>Formulários de Cadastro</title>
   <style>
+    :root {
+      --verde-claro: #d4edda;
+      --verde-medio: #a8dfaf;
+      --verde-escuro: #4caf50;
+      --branco: #ffffff;
+      --cinza-texto: #444;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #8EC5FC, #E0C3FC);
-      color: #333;
+      background: linear-gradient(to right, #e0f7e9, #c8f5d6);
+      color: var(--cinza-texto);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,31 +27,32 @@
     }
 
     .container {
-      background: white;
+      background: var(--branco);
       padding: 30px 20px;
       border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 450px;
+      max-width: 480px;
       width: 100%;
     }
 
     .profile-img {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
-      border: 4px solid #ddd;
+      border: 3px solid var(--verde-medio);
     }
 
     h1 {
       margin: 10px 0 5px;
       font-size: 24px;
+      color: var(--verde-escuro);
     }
 
     p.description {
-      font-size: 14px;
+      font-size: 15px;
       color: #555;
       margin-bottom: 20px;
     }
@@ -51,29 +60,31 @@
     h2.section-title {
       font-size: 18px;
       margin-top: 30px;
-      color: #444;
-      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+      color: var(--verde-escuro);
+      border-bottom: 2px solid var(--verde-medio);
       padding-bottom: 5px;
     }
 
     .links a {
       display: block;
-      background-color: #6C63FF;
+      background-color: var(--verde-escuro);
       color: white;
       text-decoration: none;
       padding: 12px 20px;
       margin: 10px 0;
       border-radius: 8px;
+      font-size: 15px;
       transition: background 0.3s ease;
     }
 
     .links a:hover {
-      background-color: #5848e5;
+      background-color: #3c8c42;
     }
 
     footer {
       margin-top: 30px;
-      font-size: 12px;
+      font-size: 13px;
       color: #666;
     }
 
@@ -91,12 +102,12 @@
 </head>
 <body>
   <div class="container">
-    <img src="https://via.placeholder.com/120" alt="Foto de Perfil" class="profile-img" />
+    <img src="https://via.placeholder.com/110" alt="Foto de Perfil" class="profile-img" />
     <h1>Seu Nome</h1>
     <p class="description">Escolha o tipo de cadastro ou selecione um vendedor abaixo.</p>
 
     <!-- Seção Cadastros -->
-    <h2 class="section-title">Cadastros</h2>
+    <h2 class="section-title">📋 Cadastros</h2>
     <div class="links">
       <a href="https://forms.gle/x1ACmqLZTRzNP8ZH8" target="_blank">Cadastro de Clientes (15% a 20%)</a>
       <a href="https://forms.gle/waLHTt6Ps1CEyJkU6" target="_blank">Cadastro de Clientes (25%)</a>
@@ -104,7 +115,7 @@
     </div>
 
     <!-- Seção Vendedores -->
-    <h2 class="section-title">Vendedores</h2>
+    <h2 class="section-title">👨‍💼 Vendedores</h2>
     <div class="links">
       <a href="https://forms.gle/wByNg74Fn6xMuyFb9" target="_blank">Denis</a>
       <a href="https://forms.gle/T2BUixaqmfeRuN5B8" target="_blank">Luan</a>
