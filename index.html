@@ -6,9 +6,9 @@
   <title>Formulários de Cadastro</title>
   <style>
     :root {
-      --verde-claro: #d4edda;
-      --verde-medio: #a8dfaf;
-      --verde-escuro: #4caf50;
+      --verde-gradiente-inicio: #a8e6cf;
+      --verde-gradiente-fim: #81c784;
+      --verde-escuro: #388e3c;
       --branco: #ffffff;
       --cinza-texto: #444;
     }
@@ -29,8 +29,8 @@
     .container {
       background: var(--branco);
       padding: 30px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       text-align: center;
       max-width: 480px;
       width: 100%;
@@ -42,7 +42,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 15px;
-      border: 3px solid var(--verde-medio);
+      border: 3px solid var(--verde-gradiente-fim);
     }
 
     h1 {
@@ -62,24 +62,27 @@
       margin-top: 30px;
       margin-bottom: 10px;
       color: var(--verde-escuro);
-      border-bottom: 2px solid var(--verde-medio);
+      border-bottom: 2px solid var(--verde-gradiente-fim);
       padding-bottom: 5px;
     }
 
     .links a {
       display: block;
-      background-color: var(--verde-escuro);
+      background: linear-gradient(to right, var(--verde-gradiente-inicio), var(--verde-gradiente-fim));
       color: white;
       text-decoration: none;
-      padding: 12px 20px;
-      margin: 10px 0;
-      border-radius: 8px;
+      padding: 14px 22px;
+      margin: 12px 0;
+      border-radius: 12px;
       font-size: 15px;
-      transition: background 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
 
     .links a:hover {
-      background-color: #3c8c42;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     }
 
     footer {
@@ -95,7 +98,7 @@
 
       .links a {
         font-size: 14px;
-        padding: 10px;
+        padding: 12px 16px;
       }
     }
   </style>
