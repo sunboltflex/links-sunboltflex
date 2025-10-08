@@ -11,6 +11,7 @@
       --verde-escuro: #388e3c;
       --branco: #ffffff;
       --cinza-texto: #444;
+      --preto: #000000;
     }
 
     body {
@@ -69,7 +70,7 @@
     .links a {
       display: block;
       background: linear-gradient(to right, var(--verde-gradiente-inicio), var(--verde-gradiente-fim));
-      color: white;
+      color: var(--preto); /* texto preto */
       text-decoration: none;
       padding: 14px 22px;
       margin: 12px 0;
@@ -106,7 +107,7 @@
 <body>
   <div class="container">
     <img src="https://via.placeholder.com/110" alt="Foto de Perfil" class="profile-img" />
-    <h1>Seu Nome</h1>
+    <h1>SUNBOLT FLEX</h1>
     <p class="description">Escolha o tipo de cadastro ou selecione um vendedor abaixo.</p>
 
     <!-- Seção Cadastros -->
@@ -128,7 +129,7 @@
     </div>
 
     <footer>
-      © 2025 - Seu Nome
+      © 2025 - Sunbolt Flex
     </footer>
   </div>
 </body>
