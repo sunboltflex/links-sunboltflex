@@ -78,15 +78,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(
-        to right,
-        var(--verde-gradiente-inicio),
-        var(--verde-gradiente-fim)
-      );
+      background: linear-gradient(to right, var(--verde-gradiente-inicio), var(--verde-gradiente-fim));
       padding: 12px 16px;
       margin: 10px 0;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
       transition: all .25s ease;
     }
 
@@ -106,9 +102,14 @@
       cursor: pointer;
       color: var(--verde-escuro);
       padding-left: 10px;
+      transition: color 0.2s;
     }
 
-    /* 🌟 BOTÃO PRINCIPAL SUNBOLT */
+    .copy-btn:hover {
+      color: #2e7d32;
+    }
+
+    /* 🌟 BOTÃO SUNBOLT ENERGY (DESTAQUE) */
     .link-group.sunbolt-main {
       background: linear-gradient(135deg,
         var(--sunbolt-azul-1),
@@ -117,23 +118,23 @@
       padding: 18px 20px;
       margin: 18px 0;
       transform: scale(1.03);
-      box-shadow: 0 10px 28px var(--sunbolt-glow);
+      box-shadow: 0 10px 30px var(--sunbolt-glow);
     }
 
     .link-group.sunbolt-main a {
-      color: #fff;
+      color: #ffffff;
       font-weight: 700;
       font-size: 16px;
       letter-spacing: .3px;
     }
 
     .link-group.sunbolt-main .copy-btn {
-      color: #fff;
+      color: #ffffff;
     }
 
     .link-group.sunbolt-main:hover {
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 16px 40px var(--sunbolt-glow);
+      box-shadow: 0 16px 42px var(--sunbolt-glow);
     }
 
     footer {
@@ -149,6 +150,7 @@
       }
 
       .copy-btn {
+        padding-left: 0;
         margin-top: 5px;
         align-self: flex-end;
       }
@@ -164,19 +166,23 @@
 
     <h2 class="section-title">⚡ Usinas c/ Clientes</h2>
 
-    <div class="link-group">
-      <a href="https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9" target="_blank">
-        Informações Cliente / Usinas
-      </a>
-      <button class="copy-btn" onclick="copiarLink(this,'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">📝</button>
+    <div class="links">
+      <div class="link-group">
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9" target="_blank">
+          Informações Cliente / Usinas
+        </a>
+        <button class="copy-btn" onclick="copiarLink(this,'https://app.powerbi.com/view?r=eyJrIjoiODI5YjEzZDUtMmQxMC00NmMyLTkyMTUtNzVhOTEzOGM5ZjQxIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">📝</button>
+      </div>
     </div>
 
-    <!-- ⭐ BOTÃO DESTAQUE -->
-    <div class="link-group sunbolt-main">
-      <a href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank">
-        ⚡ Informações Sunbolt Energy
-      </a>
-      <button class="copy-btn" onclick="copiarLink(this,'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">📝</button>
+    <div class="links">
+      <!-- ⭐ BOTÃO ALTERADO -->
+      <div class="link-group sunbolt-main">
+        <a href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank">
+          ⚡ Informações Sunbolt Energy
+        </a>
+        <button class="copy-btn" onclick="copiarLink(this,'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">📝</button>
+      </div>
     </div>
 
     <footer>
@@ -187,9 +193,9 @@
   <script>
     function copiarLink(botao, link) {
       navigator.clipboard.writeText(link).then(() => {
-        const original = botao.innerHTML;
+        const textoOriginal = botao.innerHTML;
         botao.innerHTML = '✅';
-        setTimeout(() => botao.innerHTML = original, 1500);
+        setTimeout(() => botao.innerHTML = textoOriginal, 1500);
       });
     }
   </script>
