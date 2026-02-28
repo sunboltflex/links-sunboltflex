@@ -5,55 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Informações Internas - Sunbolt Flex</title>
 
-  <!-- Fonte moderna (opcional) -->
+  <!-- Fonte moderna -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Base */
       --bg: #f4f6f9;
       --card: #ffffff;
       --text: #0f172a;
       --muted: #64748b;
       --border: #e2e8f0;
 
-      /* Sunbolt */
       --sunbolt-azul-1: #0b4fb3;
       --sunbolt-azul-2: #1e73e8;
       --sunbolt-glow: rgba(30,115,232,.22);
 
-      /* Accent verde (leve) */
       --accent: #16a34a;
       --accent-soft: rgba(22,163,74,.10);
 
       --shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
       --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.08);
 
-      --radius-xl: 18px;
+      --radius-xl: 22px;
       --radius-lg: 14px;
       --radius-md: 12px;
+
+      --tap: 44px;
     }
 
     *{ box-sizing: border-box; }
 
     body{
       margin: 0;
-      font-family: Inter, "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-      background: radial-gradient(1200px 500px at 50% -120px, rgba(30,115,232,.16), transparent 55%),
-                  radial-gradient(900px 450px at 10% 0px, rgba(22,163,74,.10), transparent 55%),
-                  var(--bg);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
       color: var(--text);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       padding: 26px 14px;
+
+      background:
+        radial-gradient(1200px 500px at 50% -120px, rgba(30,115,232,.16), transparent 55%),
+        radial-gradient(900px 450px at 10% 0px, rgba(22,163,74,.10), transparent 55%),
+        var(--bg);
     }
 
-    .container{
+    main.container{
       width: 100%;
-      max-width: 560px;
+      max-width: 620px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
@@ -67,8 +68,8 @@
     }
 
     .profile-img{
-      width: 92px;
-      height: 92px;
+      width: 94px;
+      height: 94px;
       border-radius: 50%;
       object-fit: contain;
       background: #fff;
@@ -81,11 +82,12 @@
       margin: 6px 0 6px;
       font-size: 20px;
       letter-spacing: .3px;
+      font-weight: 700;
     }
 
     .description{
       margin: 0 auto 14px;
-      max-width: 42ch;
+      max-width: 52ch;
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.35;
@@ -97,7 +99,8 @@
       margin: 16px 0 6px;
     }
 
-    .section{
+    /* Seções */
+    section{
       margin-top: 16px;
     }
 
@@ -122,9 +125,17 @@
       flex: 0 0 auto;
     }
 
+    /* Grid de cards */
     .grid{
       display: grid;
       gap: 10px;
+    }
+
+    /* Em telas maiores, alguns grupos ficam em 2 colunas (como na imagem) */
+    @media (min-width: 560px){
+      .grid.two-col{
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .item{
@@ -136,7 +147,6 @@
       border-radius: var(--radius-lg);
       background: #fbfdff;
       border: 1px solid var(--border);
-      box-shadow: 0 0 0 rgba(0,0,0,0);
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }
 
@@ -146,9 +156,19 @@
       box-shadow: var(--shadow-soft);
     }
 
+    .open{
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 0;
+    }
+
     .icon{
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 12px;
       display: grid;
       place-items: center;
@@ -176,22 +196,12 @@
     }
 
     .meta .hint{
-      margin: 2px 0 0;
+      margin: 3px 0 0;
       font-size: 12px;
       color: var(--muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    .open{
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
     }
 
     .actions{
@@ -202,17 +212,17 @@
     }
 
     .copy-btn{
-      border: 1px solid var(--border);
-      background: #ffffff;
-      color: var(--text);
-      width: 38px;
-      height: 38px;
+      width: var(--tap);
+      height: var(--tap);
       border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fff;
       cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
       display: grid;
       place-items: center;
       font-size: 16px;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      user-select: none;
     }
 
     .copy-btn:hover{
@@ -221,19 +231,21 @@
       box-shadow: 0 10px 20px rgba(22,163,74,.12);
     }
 
+    .arrow{
+      color: var(--muted);
+      font-size: 18px;
+      padding: 0 2px;
+      user-select: none;
+    }
+
+    /* Acessibilidade */
     .copy-btn:focus-visible,
     .item:focus-within{
       outline: 3px solid rgba(30,115,232,.22);
       outline-offset: 2px;
     }
 
-    .arrow{
-      color: var(--muted);
-      font-size: 18px;
-      padding: 0 2px;
-    }
-
-    /* Destaque Sunbolt */
+    /* Destaque */
     .item.sunbolt{
       background: linear-gradient(135deg, rgba(11,79,179,.10), rgba(30,115,232,.08)) , #fbfdff;
       border-color: rgba(30,115,232,.25);
@@ -262,7 +274,7 @@
     }
 
     @media (max-width: 420px){
-      .container{ padding: 20px 14px; }
+      main.container{ padding: 20px 14px; }
       .meta .hint{ display: none; }
       .badge{ display: none; }
     }
@@ -274,13 +286,15 @@
     <header>
       <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
       <h1>INFORMAÇÕES INTERNAS</h1>
-      <p class="description">Escolha o tipo de cadastro, mapa ou ferramenta. Você também pode copiar o link rápido pelo botão ao lado.</p>
+      <p class="description">
+        Escolha o tipo de cadastro, mapa ou ferramenta. Você também pode copiar o link rápido pelo botão ao lado.
+      </p>
     </header>
 
     <div class="divider"></div>
 
     <!-- Usinas c/ Clientes -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Usinas c/ Clientes</div>
       <div class="grid">
 
@@ -293,13 +307,13 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiODI5YjEzZDUtMmQxMC00NmMyLTkyMTUtNzVhOTEzOGM5ZjQxIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
 
         <div class="item sunbolt">
-          <span class="badge">Destaque</span>
+          <span class="badge">DESTAQUE</span>
           <a class="open" href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank" rel="noopener">
             <div class="icon">⚡</div>
             <div class="meta">
@@ -317,10 +331,9 @@
     </section>
 
     <!-- Mapas -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Mapas</div>
-      <div class="grid">
-
+      <div class="grid two-col">
         <div class="item">
           <a class="open" href="https://www.google.com/maps/d/u/0/edit?mid=14NqbGt8CTfgRy6--LIiNp9xiIXSMcsA&usp=sharing" target="_blank" rel="noopener">
             <div class="icon">🗺️</div>
@@ -348,12 +361,11 @@
             <span class="arrow">›</span>
           </div>
         </div>
-
       </div>
     </section>
 
     <!-- Digital Grid -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Digital Grid</div>
       <div class="grid">
 
@@ -403,9 +415,9 @@
     </section>
 
     <!-- Simulador -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Simulador</div>
-      <div class="grid">
+      <div class="grid two-col">
 
         <div class="item">
           <a class="open" href="https://sunboltflex.github.io/simulador-energia-15/" target="_blank" rel="noopener">
@@ -421,11 +433,26 @@
           </div>
         </div>
 
+        <!-- (Opcional) Se você quiser outro link aqui, é só duplicar o card -->
+        <div class="item" style="opacity:.55">
+          <div class="open" aria-hidden="true">
+            <div class="icon">➕</div>
+            <div class="meta">
+              <p class="title">Adicionar outro atalho</p>
+              <p class="hint">Opcional</p>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="copy-btn" disabled title="Opcional">⧉</button>
+            <span class="arrow">›</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- Cadastros -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Cadastros</div>
       <div class="grid">
 
@@ -475,9 +502,10 @@
     </section>
 
     <!-- Vendedores -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Vendedores</div>
-      <div class="grid">
+      <div class="grid two-col">
+
         <div class="item"><a class="open" href="https://forms.gle/wByNg74Fn6xMuyFb9" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Denis</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/wByNg74Fn6xMuyFb9')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
         <div class="item"><a class="open" href="https://forms.gle/T2BUixaqmfeRuN5B8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Luan</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/T2BUixaqmfeRuN5B8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
         <div class="item"><a class="open" href="https://forms.gle/24QAtQ4rWqdQYGEW6" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Edilson</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/24QAtQ4rWqdQYGEW6')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
@@ -487,11 +515,12 @@
         <div class="item"><a class="open" href="https://forms.gle/ZRWKmtJSdkuwRfrQ6" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Weber</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/ZRWKmtJSdkuwRfrQ6')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
         <div class="item"><a class="open" href="https://forms.gle/LSbwc9zinov51cmv7" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Thyago Soares</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/LSbwc9zinov51cmv7')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
         <div class="item"><a class="open" href="https://forms.gle/4whhKxnWh1NP7W6e7" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Elton</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/4whhKxnWh1NP7W6e7')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+
       </div>
     </section>
 
     <!-- Avaliação -->
-    <section class="section">
+    <section>
       <div class="section-title"><span class="dot"></span> Avaliação</div>
       <div class="grid">
         <div class="item">
@@ -516,7 +545,6 @@
   <script>
     function copiarLink(botao, link) {
       if (!navigator.clipboard) {
-        // fallback simples
         const temp = document.createElement("textarea");
         temp.value = link;
         document.body.appendChild(temp);
