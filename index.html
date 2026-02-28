@@ -18,20 +18,23 @@
       --muted: #64748b;
       --border: #e2e8f0;
 
-      --sunbolt-azul-1: #0b4fb3;
-      --sunbolt-azul-2: #1e73e8;
-      --sunbolt-glow: rgba(30,115,232,.22);
+      --green: #16a34a;
+      --green-soft-1: rgba(22,163,74,.14);
+      --green-soft-2: rgba(22,163,74,.08);
+      --green-border: rgba(22,163,74,.30);
+      --green-glow: rgba(22,163,74,.18);
 
-      --accent: #16a34a;
-      --accent-soft: rgba(22,163,74,.10);
+      --blue1: #0b4fb3;
+      --blue2: #1e73e8;
+      --blue-border: rgba(30,115,232,.35);
+      --blue-glow: rgba(30,115,232,.22);
 
       --shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
       --shadow-soft: 0 10px 24px rgba(15, 23, 42, 0.08);
 
       --radius-xl: 22px;
-      --radius-lg: 14px;
+      --radius-lg: 16px;
       --radius-md: 12px;
-
       --tap: 44px;
     }
 
@@ -47,14 +50,14 @@
       padding: 26px 14px;
 
       background:
-        radial-gradient(1200px 500px at 50% -120px, rgba(30,115,232,.16), transparent 55%),
-        radial-gradient(900px 450px at 10% 0px, rgba(22,163,74,.10), transparent 55%),
+        radial-gradient(1200px 520px at 50% -140px, rgba(30,115,232,.16), transparent 55%),
+        radial-gradient(900px 460px at 10% 0px, rgba(22,163,74,.10), transparent 55%),
         var(--bg);
     }
 
     main.container{
       width: 100%;
-      max-width: 620px;
+      max-width: 650px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
@@ -87,7 +90,7 @@
 
     .description{
       margin: 0 auto 14px;
-      max-width: 52ch;
+      max-width: 62ch;
       font-size: 13.5px;
       color: var(--muted);
       line-height: 1.35;
@@ -99,10 +102,7 @@
       margin: 16px 0 6px;
     }
 
-    /* Seções */
-    section{
-      margin-top: 16px;
-    }
+    section{ margin-top: 16px; }
 
     .section-title{
       display: flex;
@@ -120,22 +120,18 @@
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px var(--accent-soft);
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(22,163,74,.10);
       flex: 0 0 auto;
     }
 
-    /* Grid de cards */
     .grid{
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
-    /* Em telas maiores, alguns grupos ficam em 2 colunas (como na imagem) */
-    @media (min-width: 560px){
-      .grid.two-col{
-        grid-template-columns: 1fr 1fr;
-      }
+    @media (min-width: 600px){
+      .grid.two-col{ grid-template-columns: 1fr 1fr; }
     }
 
     .item{
@@ -143,7 +139,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 13px 14px;
+      padding: 14px;
       border-radius: var(--radius-lg);
       background: #fbfdff;
       border: 1px solid var(--border);
@@ -152,10 +148,11 @@
 
     .item:hover{
       transform: translateY(-2px);
-      border-color: rgba(30,115,232,.25);
+      border-color: rgba(30,115,232,.22);
       box-shadow: var(--shadow-soft);
     }
 
+    /* card clicável */
     .open{
       text-decoration: none;
       color: inherit;
@@ -167,8 +164,8 @@
     }
 
     .icon{
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 12px;
       display: grid;
       place-items: center;
@@ -178,18 +175,12 @@
       font-size: 18px;
     }
 
-    .meta{
-      flex: 1;
-      min-width: 0;
-      text-align: left;
-    }
+    .meta{ flex: 1; min-width: 0; }
 
     .meta .title{
       font-weight: 600;
-      font-size: 14.5px;
-      line-height: 1.2;
+      font-size: 14.8px;
       margin: 0;
-      color: var(--text);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -238,17 +229,26 @@
       user-select: none;
     }
 
-    /* Acessibilidade */
     .copy-btn:focus-visible,
     .item:focus-within{
-      outline: 3px solid rgba(30,115,232,.22);
+      outline: 3px solid rgba(30,115,232,.20);
       outline-offset: 2px;
     }
 
-    /* Destaque */
+    /* ✅ NOVO: Sunbolt Flex (verde claro) */
+    .item.sunbolt-flex{
+      background: linear-gradient(135deg, var(--green-soft-1), var(--green-soft-2)), #fbfdff;
+      border-color: var(--green-border);
+    }
+    .item.sunbolt-flex:hover{
+      border-color: rgba(22,163,74,.45);
+      box-shadow: 0 12px 28px var(--green-glow);
+    }
+
+    /* Azul destaque */
     .item.sunbolt{
-      background: linear-gradient(135deg, rgba(11,79,179,.10), rgba(30,115,232,.08)) , #fbfdff;
-      border-color: rgba(30,115,232,.25);
+      background: linear-gradient(135deg, rgba(11,79,179,.12), rgba(30,115,232,.10)), #fbfdff;
+      border-color: var(--blue-border);
     }
 
     .badge{
@@ -258,10 +258,11 @@
       font-size: 11px;
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(135deg, var(--sunbolt-azul-1), var(--sunbolt-azul-2));
+      background: linear-gradient(135deg, var(--blue1), var(--blue2));
       padding: 5px 10px;
       border-radius: 999px;
-      box-shadow: 0 12px 28px var(--sunbolt-glow);
+      box-shadow: 0 12px 28px var(--blue-glow);
+      letter-spacing: .03em;
     }
 
     footer{
@@ -298,20 +299,23 @@
       <div class="section-title"><span class="dot"></span> Usinas c/ Clientes</div>
       <div class="grid">
 
-        <div class="item">
+        <!-- ✅ ALTERADO: Informações Sunbolt Flex + verde claro -->
+        <div class="item sunbolt-flex">
           <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9" target="_blank" rel="noopener">
-            <div class="icon">👥</div>
+            <div class="icon">🌿</div>
             <div class="meta">
-              <p class="title">Informações Cliente / Usinas</p>
+              <p class="title">Informações Sunbolt Flex</p>
               <p class="hint">Relatório Power BI</p>
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
 
+        <!-- Destaque Azul -->
         <div class="item sunbolt">
           <span class="badge">DESTAQUE</span>
           <a class="open" href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank" rel="noopener">
@@ -322,7 +326,8 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
@@ -334,6 +339,7 @@
     <section>
       <div class="section-title"><span class="dot"></span> Mapas</div>
       <div class="grid two-col">
+
         <div class="item">
           <a class="open" href="https://www.google.com/maps/d/u/0/edit?mid=14NqbGt8CTfgRy6--LIiNp9xiIXSMcsA&usp=sharing" target="_blank" rel="noopener">
             <div class="icon">🗺️</div>
@@ -343,7 +349,8 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://www.google.com/maps/d/u/0/edit?mid=14NqbGt8CTfgRy6--LIiNp9xiIXSMcsA&usp=sharing')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://www.google.com/maps/d/u/0/edit?mid=14NqbGt8CTfgRy6--LIiNp9xiIXSMcsA&usp=sharing')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
@@ -352,15 +359,17 @@
           <a class="open" href="https://www.google.com/maps/d/edit?mid=1uG7XPQyma6D0RPAVC_-Mq5Sym2E6BRA&usp=sharing" target="_blank" rel="noopener">
             <div class="icon">📍</div>
             <div class="meta">
-              <p class="title">Usinas / Bairro</p>
+              <p class="title">Mapa de Usinas / Bairro</p>
               <p class="hint">Google My Maps</p>
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://www.google.com/maps/d/edit?mid=1uG7XPQyma6D0RPAVC_-Mq5Sym2E6BRA&usp=sharing')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://www.google.com/maps/d/edit?mid=1uG7XPQyma6D0RPAVC_-Mq5Sym2E6BRA&usp=sharing')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -378,7 +387,8 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://gestao.dg.energy/login/')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://gestao.dg.energy/login/')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
@@ -392,7 +402,8 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
@@ -406,7 +417,8 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
@@ -417,8 +429,7 @@
     <!-- Simulador -->
     <section>
       <div class="section-title"><span class="dot"></span> Simulador</div>
-      <div class="grid two-col">
-
+      <div class="grid">
         <div class="item">
           <a class="open" href="https://sunboltflex.github.io/simulador-energia-15/" target="_blank" rel="noopener">
             <div class="icon">🧮</div>
@@ -428,26 +439,11 @@
             </div>
           </a>
           <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://sunboltflex.github.io/simulador-energia-15/')">⧉</button>
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://sunboltflex.github.io/simulador-energia-15/')">⧉</button>
             <span class="arrow">›</span>
           </div>
         </div>
-
-        <!-- (Opcional) Se você quiser outro link aqui, é só duplicar o card -->
-        <div class="item" style="opacity:.55">
-          <div class="open" aria-hidden="true">
-            <div class="icon">➕</div>
-            <div class="meta">
-              <p class="title">Adicionar outro atalho</p>
-              <p class="hint">Opcional</p>
-            </div>
-          </div>
-          <div class="actions">
-            <button class="copy-btn" disabled title="Opcional">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -554,14 +550,13 @@
         feedback(botao);
         return;
       }
-
       navigator.clipboard.writeText(link).then(() => feedback(botao));
     }
 
     function feedback(botao){
       const original = botao.textContent;
       botao.textContent = "✅";
-      botao.style.borderColor = "rgba(22,163,74,.35)";
+      botao.style.borderColor = "rgba(22,163,74,.45)";
       setTimeout(() => {
         botao.textContent = original;
         botao.style.borderColor = "";
