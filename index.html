@@ -184,16 +184,66 @@
       z-index: 1;
     }
 
+    .logo-wrap{
+      position: relative;
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      animation: logoFloat 4.5s ease-in-out infinite;
+    }
+
+    .logo-wrap::before{
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          from 180deg,
+          rgba(11,79,179,.0),
+          rgba(30,115,232,.55),
+          rgba(22,163,74,.55),
+          rgba(11,79,179,.0)
+        );
+      filter: blur(14px);
+      opacity: .95;
+      z-index: 0;
+      animation: haloSpin 8s linear infinite;
+    }
+
+    .logo-wrap::after{
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.30), transparent 38%),
+        linear-gradient(to bottom, rgba(11,79,179,.92) 0%, rgba(11,79,179,.92) 50%, rgba(22,163,74,.92) 50%, rgba(22,163,74,.92) 100%);
+      border: 1px solid rgba(255,255,255,.28);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 0 24px rgba(30,115,232,.26),
+        0 0 28px rgba(22,163,74,.18);
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      z-index: 1;
+    }
+
     .profile-img{
-      width: 94px;
-      height: 94px;
+      position: relative;
+      z-index: 2;
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
       object-fit: contain;
       padding: 10px;
-      background: linear-gradient(to bottom, #0b4fb3 0%, #0b4fb3 50%, #16a34a 50%, #16a34a 100%);
-      border: 1px solid rgba(255,255,255,.35);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-      margin-bottom: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.20);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 8px 18px rgba(0, 0, 0, 0.18);
     }
 
     h1{
@@ -430,6 +480,16 @@
       }
 
       .meta .hint{ display: none; }
+
+      .logo-wrap{
+        width: 102px;
+        height: 102px;
+      }
+
+      .profile-img{
+        width: 80px;
+        height: 80px;
+      }
     }
 
     @media (min-width: 521px) and (max-width: 900px){
@@ -443,7 +503,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after{
+      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after, .logo-wrap, .logo-wrap::before{
         transition: none !important;
         animation: none !important;
       }
@@ -470,6 +530,16 @@
       50%{ opacity: .5; }
       100%{ transform: translateX(10%) rotate(-8deg); opacity: .25; }
     }
+
+    @keyframes logoFloat{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-4px); }
+    }
+
+    @keyframes haloSpin{
+      0%{ transform: rotate(0deg); }
+      100%{ transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -479,7 +549,10 @@
 
   <main class="container">
     <header>
-      <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
+      <div class="logo-wrap">
+        <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
+      </div>
+
       <h1>INFORMAÇÕES INTERNAS</h1>
       <p class="description">
         Escolha o tipo de cadastro, mapa ou ferramenta. Você também pode copiar o link rápido pelo botão ao lado.
@@ -488,7 +561,6 @@
 
     <div class="divider"></div>
 
-    <!-- Usinas c/ Clientes -->
     <section>
       <div class="section-title"><span class="dot"></span> Usinas c/ Clientes</div>
       <div class="grid">
@@ -526,7 +598,6 @@
       </div>
     </section>
 
-    <!-- Digital Grid -->
     <section>
       <div class="section-title"><span class="dot"></span> Digital Grid</div>
       <div class="grid">
@@ -578,7 +649,6 @@
       </div>
     </section>
 
-    <!-- Simulador -->
     <section>
       <div class="section-title"><span class="dot"></span> Simulador</div>
       <div class="grid">
@@ -598,7 +668,6 @@
       </div>
     </section>
 
-    <!-- Cadastros -->
     <section>
       <div class="section-title"><span class="dot"></span> Cadastros</div>
       <div class="grid">
@@ -648,7 +717,6 @@
       </div>
     </section>
 
-    <!-- Vendedores -->
     <section>
       <div class="section-title"><span class="dot"></span> Vendedores</div>
       <div class="grid two-col">
@@ -666,7 +734,6 @@
       </div>
     </section>
 
-    <!-- Avaliação -->
     <section>
       <div class="section-title"><span class="dot"></span> Avaliação</div>
       <div class="grid">
