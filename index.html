@@ -194,7 +194,6 @@
       animation: logoFloat 4.5s ease-in-out infinite;
     }
 
-    /* halo externo neon */
     .logo-wrap::before{
       content: "";
       position: absolute;
@@ -214,7 +213,6 @@
       animation: haloSpin 10s linear infinite;
     }
 
-    /* anel metálico premium */
     .logo-ring{
       position: absolute;
       inset: 0;
@@ -269,7 +267,6 @@
         inset 0 -12px 18px rgba(0,0,0,.12);
     }
 
-    /* brilho passando */
     .logo-bg::after{
       content: "";
       position: absolute;
@@ -374,13 +371,16 @@
       align-items: center;
       gap: 12px;
       padding: var(--pad);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.08));
-      border: 1px solid rgba(255,255,255,.14);
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25),
+        0 8px 24px rgba(0,0,0,.25);
+      backdrop-filter: blur(14px) saturate(160%);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      transition: all .25s ease;
       min-width: 0;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       overflow: hidden;
     }
 
@@ -399,10 +399,13 @@
     }
 
     .item:hover{
-      transform: translateY(-3px);
-      border-color: rgba(255,255,255,.24);
-      box-shadow: var(--shadow-soft);
-      background: linear-gradient(180deg, rgba(255,255,255,.17), rgba(255,255,255,.10));
+      transform: translateY(-4px) scale(1.01);
+      border-color: rgba(30,115,232,.55);
+      box-shadow:
+        0 16px 38px rgba(0,0,0,.35),
+        0 0 22px rgba(30,115,232,.28),
+        0 0 26px rgba(22,163,74,.18);
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08));
     }
 
     .open{
@@ -421,11 +424,14 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,255,255,.22);
       flex: 0 0 auto;
       font-size: 18px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.28),
+        0 0 14px rgba(30,115,232,.22),
+        0 0 18px rgba(22,163,74,.18);
     }
 
     .meta{ flex: 1; min-width: 0; }
@@ -500,7 +506,10 @@
 
     .item.sunbolt-flex:hover{
       border-color: rgba(22,163,74,.48);
-      box-shadow: 0 14px 32px var(--green-glow);
+      box-shadow:
+        0 16px 38px rgba(0,0,0,.35),
+        0 0 20px rgba(22,163,74,.28),
+        0 0 26px rgba(30,115,232,.16);
     }
 
     .item.sunbolt{
@@ -509,8 +518,11 @@
     }
 
     .item.sunbolt:hover{
-      border-color: rgba(30,115,232,.48);
-      box-shadow: 0 14px 32px var(--blue-glow);
+      border-color: rgba(30,115,232,.55);
+      box-shadow:
+        0 16px 38px rgba(0,0,0,.35),
+        0 0 22px rgba(30,115,232,.28),
+        0 0 24px rgba(22,163,74,.15);
     }
 
     footer{
