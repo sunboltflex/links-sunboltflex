@@ -65,6 +65,7 @@
         linear-gradient(135deg, #06101d 0%, #0b1830 35%, #0c2447 68%, #0a4e73 100%);
     }
 
+    /* brilho tecnológico animado */
     body::before,
     body::after{
       content: "";
@@ -96,6 +97,7 @@
       animation: floatGlow2 12s ease-in-out infinite;
     }
 
+    /* grade tecnológica sutil */
     .bg-grid{
       position: fixed;
       inset: 0;
@@ -184,123 +186,15 @@
       z-index: 1;
     }
 
-    .logo-wrap{
-      position: relative;
-      width: 124px;
-      height: 124px;
-      margin: 0 auto 14px;
-      display: grid;
-      place-items: center;
-      animation: logoFloat 4.5s ease-in-out infinite;
-    }
-
-    .logo-wrap::before{
-      content: "";
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      background:
-        conic-gradient(
-          from 180deg,
-          rgba(255,255,255,0),
-          rgba(30,115,232,.70),
-          rgba(22,163,74,.72),
-          rgba(255,255,255,0)
-        );
-      filter: blur(16px);
-      opacity: .95;
-      z-index: 0;
-      animation: haloSpin 10s linear infinite;
-    }
-
-    .logo-ring{
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      z-index: 1;
-      background:
-        linear-gradient(145deg,
-          rgba(255,255,255,.95) 0%,
-          rgba(219,228,240,.88) 18%,
-          rgba(130,145,165,.85) 36%,
-          rgba(255,255,255,.92) 52%,
-          rgba(165,178,196,.88) 70%,
-          rgba(255,255,255,.96) 100%);
-      box-shadow:
-        inset 0 2px 4px rgba(255,255,255,.55),
-        inset 0 -4px 10px rgba(40,52,70,.30),
-        0 10px 24px rgba(0,0,0,.22),
-        0 0 22px rgba(30,115,232,.20),
-        0 0 24px rgba(22,163,74,.16);
-      padding: 7px;
-    }
-
-    .logo-ring::before{
-      content: "";
-      position: absolute;
-      inset: 7px;
-      border-radius: 50%;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.04));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.55),
-        inset 0 -1px 0 rgba(255,255,255,.10);
-      pointer-events: none;
-    }
-
-    .logo-bg{
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 28% 22%, rgba(255,255,255,.32), transparent 28%),
-        linear-gradient(to bottom, rgba(11,79,179,.96) 0%, rgba(11,79,179,.96) 50%, rgba(22,163,74,.96) 50%, rgba(22,163,74,.96) 100%);
-      border: 1px solid rgba(255,255,255,.22);
-      backdrop-filter: blur(14px) saturate(145%);
-      -webkit-backdrop-filter: blur(14px) saturate(145%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.28),
-        inset 0 -12px 18px rgba(0,0,0,.12);
-    }
-
-    .logo-bg::after{
-      content: "";
-      position: absolute;
-      top: -18%;
-      left: -52%;
-      width: 44%;
-      height: 140%;
-      transform: rotate(24deg);
-      background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0) 0%,
-        rgba(255,255,255,.18) 35%,
-        rgba(255,255,255,.72) 50%,
-        rgba(255,255,255,.16) 65%,
-        rgba(255,255,255,0) 100%
-      );
-      filter: blur(2px);
-      animation: shineSweep 4.8s ease-in-out infinite;
-      pointer-events: none;
-    }
-
     .profile-img{
-      position: relative;
-      z-index: 2;
-      width: 84px;
-      height: 84px;
+      width: 94px;
+      height: 94px;
       border-radius: 50%;
       object-fit: contain;
-      padding: 10px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.22);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.16),
-        0 8px 18px rgba(0, 0, 0, 0.18);
+      background: rgba(255,255,255,.95);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      margin-bottom: 12px;
     }
 
     h1{
@@ -371,16 +265,13 @@
       align-items: center;
       gap: 12px;
       padding: var(--pad);
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.25),
-        0 8px 24px rgba(0,0,0,.25);
-      backdrop-filter: blur(14px) saturate(160%);
-      -webkit-backdrop-filter: blur(14px) saturate(160%);
-      transition: all .25s ease;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
       min-width: 0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       overflow: hidden;
     }
 
@@ -399,13 +290,10 @@
     }
 
     .item:hover{
-      transform: translateY(-4px) scale(1.01);
-      border-color: rgba(30,115,232,.55);
-      box-shadow:
-        0 16px 38px rgba(0,0,0,.35),
-        0 0 22px rgba(30,115,232,.28),
-        0 0 26px rgba(22,163,74,.18);
-      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08));
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.24);
+      box-shadow: var(--shadow-soft);
+      background: linear-gradient(180deg, rgba(255,255,255,.17), rgba(255,255,255,.10));
     }
 
     .open{
@@ -424,14 +312,11 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.08));
-      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
       flex: 0 0 auto;
       font-size: 18px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.28),
-        0 0 14px rgba(30,115,232,.22),
-        0 0 18px rgba(22,163,74,.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
     }
 
     .meta{ flex: 1; min-width: 0; }
@@ -506,10 +391,7 @@
 
     .item.sunbolt-flex:hover{
       border-color: rgba(22,163,74,.48);
-      box-shadow:
-        0 16px 38px rgba(0,0,0,.35),
-        0 0 20px rgba(22,163,74,.28),
-        0 0 26px rgba(30,115,232,.16);
+      box-shadow: 0 14px 32px var(--green-glow);
     }
 
     .item.sunbolt{
@@ -518,11 +400,23 @@
     }
 
     .item.sunbolt:hover{
-      border-color: rgba(30,115,232,.55);
-      box-shadow:
-        0 16px 38px rgba(0,0,0,.35),
-        0 0 22px rgba(30,115,232,.28),
-        0 0 24px rgba(22,163,74,.15);
+      border-color: rgba(30,115,232,.48);
+      box-shadow: 0 14px 32px var(--blue-glow);
+    }
+
+    .badge{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue1), var(--blue2));
+      padding: 5px 10px;
+      border-radius: 999px;
+      box-shadow: 0 12px 28px var(--blue-glow);
+      letter-spacing: .03em;
+      border: 1px solid rgba(255,255,255,.16);
     }
 
     footer{
@@ -552,16 +446,7 @@
       }
 
       .meta .hint{ display: none; }
-
-      .logo-wrap{
-        width: 108px;
-        height: 108px;
-      }
-
-      .profile-img{
-        width: 74px;
-        height: 74px;
-      }
+      .badge{ display: none; }
     }
 
     @media (min-width: 521px) and (max-width: 900px){
@@ -575,7 +460,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after, .logo-wrap, .logo-wrap::before, .logo-bg::after{
+      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after{
         transition: none !important;
         animation: none !important;
       }
@@ -602,34 +487,6 @@
       50%{ opacity: .5; }
       100%{ transform: translateX(10%) rotate(-8deg); opacity: .25; }
     }
-
-    @keyframes logoFloat{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-4px); }
-    }
-
-    @keyframes haloSpin{
-      0%{ transform: rotate(0deg); }
-      100%{ transform: rotate(360deg); }
-    }
-
-    @keyframes shineSweep{
-      0%{
-        left: -52%;
-        opacity: 0;
-      }
-      12%{
-        opacity: .95;
-      }
-      38%{
-        left: 112%;
-        opacity: .75;
-      }
-      100%{
-        left: 112%;
-        opacity: 0;
-      }
-    }
   </style>
 </head>
 
@@ -639,14 +496,7 @@
 
   <main class="container">
     <header>
-      <div class="logo-wrap">
-        <div class="logo-ring">
-          <div class="logo-bg">
-            <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
-          </div>
-        </div>
-      </div>
-
+      <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
       <h1>INFORMAÇÕES INTERNAS</h1>
       <p class="description">
         Escolha o tipo de cadastro, mapa ou ferramenta. Você também pode copiar o link rápido pelo botão ao lado.
@@ -655,6 +505,7 @@
 
     <div class="divider"></div>
 
+    <!-- Usinas c/ Clientes -->
     <section>
       <div class="section-title"><span class="dot"></span> Usinas c/ Clientes</div>
       <div class="grid">
@@ -675,6 +526,7 @@
         </div>
 
         <div class="item sunbolt">
+          <span class="badge">DESTAQUE</span>
           <a class="open" href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank" rel="noopener">
             <div class="icon">⚡</div>
             <div class="meta">
@@ -692,6 +544,7 @@
       </div>
     </section>
 
+    <!-- Digital Grid -->
     <section>
       <div class="section-title"><span class="dot"></span> Digital Grid</div>
       <div class="grid">
@@ -743,6 +596,7 @@
       </div>
     </section>
 
+    <!-- Simulador -->
     <section>
       <div class="section-title"><span class="dot"></span> Simulador</div>
       <div class="grid">
@@ -762,6 +616,7 @@
       </div>
     </section>
 
+    <!-- Cadastros -->
     <section>
       <div class="section-title"><span class="dot"></span> Cadastros</div>
       <div class="grid">
@@ -811,6 +666,7 @@
       </div>
     </section>
 
+    <!-- Vendedores -->
     <section>
       <div class="section-title"><span class="dot"></span> Vendedores</div>
       <div class="grid two-col">
@@ -828,6 +684,7 @@
       </div>
     </section>
 
+    <!-- Avaliação -->
     <section>
       <div class="section-title"><span class="dot"></span> Avaliação</div>
       <div class="grid">
