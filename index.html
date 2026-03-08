@@ -252,14 +252,35 @@
     }
 
     .section-title .dot{
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
-      background: var(--green);
-      box-shadow:
-        0 0 0 6px rgba(29,185,84,.10),
-        0 0 16px rgba(29,185,84,.26);
+      background: #2cff72;
+      position: relative;
       flex: 0 0 auto;
+      box-shadow:
+        0 0 8px rgba(44,255,114,.85),
+        0 0 18px rgba(44,255,114,.55),
+        0 0 30px rgba(44,255,114,.28);
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+
+    .section-title .dot::before{
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(44,255,114,.28) 0%, rgba(44,255,114,0) 70%);
+      animation: pulseRing 1.8s ease-out infinite;
+    }
+
+    .section-title .dot::after{
+      content: "";
+      position: absolute;
+      inset: -16px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(44,255,114,.16) 0%, rgba(44,255,114,0) 75%);
+      animation: pulseRing 1.8s ease-out infinite .35s;
     }
 
     .grid{
@@ -464,7 +485,8 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after{
+      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after,
+      .section-title .dot, .section-title .dot::before, .section-title .dot::after{
         transition: none !important;
         animation: none !important;
       }
@@ -493,6 +515,38 @@
       0%{ transform: translateX(-10%) rotate(-8deg); opacity: .20; }
       50%{ opacity: .42; }
       100%{ transform: translateX(10%) rotate(-8deg); opacity: .20; }
+    }
+
+    @keyframes pulseDot{
+      0%, 100%{
+        transform: scale(1);
+        box-shadow:
+          0 0 8px rgba(44,255,114,.85),
+          0 0 18px rgba(44,255,114,.55),
+          0 0 30px rgba(44,255,114,.28);
+      }
+      50%{
+        transform: scale(1.18);
+        box-shadow:
+          0 0 12px rgba(44,255,114,1),
+          0 0 24px rgba(44,255,114,.75),
+          0 0 42px rgba(44,255,114,.38);
+      }
+    }
+
+    @keyframes pulseRing{
+      0%{
+        transform: scale(.7);
+        opacity: .9;
+      }
+      70%{
+        transform: scale(1.5);
+        opacity: 0;
+      }
+      100%{
+        transform: scale(1.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
