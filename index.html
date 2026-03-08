@@ -255,32 +255,31 @@
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: #2cff72;
+      background: #28e76b;
       position: relative;
       flex: 0 0 auto;
       box-shadow:
-        0 0 8px rgba(44,255,114,.85),
-        0 0 18px rgba(44,255,114,.55),
-        0 0 30px rgba(44,255,114,.28);
-      animation: pulseDot 1.8s ease-in-out infinite;
+        0 0 6px rgba(40,231,107,.55),
+        0 0 14px rgba(40,231,107,.25);
+      animation: pulseDotSoft 2.4s ease-in-out infinite;
     }
 
     .section-title .dot::before{
       content: "";
       position: absolute;
-      inset: -8px;
+      inset: -7px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(44,255,114,.28) 0%, rgba(44,255,114,0) 70%);
-      animation: pulseRing 1.8s ease-out infinite;
+      background: radial-gradient(circle, rgba(40,231,107,.20) 0%, rgba(40,231,107,0) 72%);
+      animation: pulseRingSoft 2.4s ease-out infinite;
     }
 
     .section-title .dot::after{
       content: "";
       position: absolute;
-      inset: -16px;
+      inset: -13px;
       border-radius: 999px;
-      background: radial-gradient(circle, rgba(44,255,114,.16) 0%, rgba(44,255,114,0) 75%);
-      animation: pulseRing 1.8s ease-out infinite .35s;
+      background: radial-gradient(circle, rgba(40,231,107,.10) 0%, rgba(40,231,107,0) 76%);
+      animation: pulseRingSoft 2.4s ease-out infinite .5s;
     }
 
     .grid{
@@ -517,34 +516,32 @@
       100%{ transform: translateX(10%) rotate(-8deg); opacity: .20; }
     }
 
-    @keyframes pulseDot{
+    @keyframes pulseDotSoft{
       0%, 100%{
         transform: scale(1);
         box-shadow:
-          0 0 8px rgba(44,255,114,.85),
-          0 0 18px rgba(44,255,114,.55),
-          0 0 30px rgba(44,255,114,.28);
+          0 0 6px rgba(40,231,107,.55),
+          0 0 14px rgba(40,231,107,.25);
       }
       50%{
-        transform: scale(1.18);
+        transform: scale(1.08);
         box-shadow:
-          0 0 12px rgba(44,255,114,1),
-          0 0 24px rgba(44,255,114,.75),
-          0 0 42px rgba(44,255,114,.38);
+          0 0 9px rgba(40,231,107,.75),
+          0 0 20px rgba(40,231,107,.35);
       }
     }
 
-    @keyframes pulseRing{
+    @keyframes pulseRingSoft{
       0%{
-        transform: scale(.7);
-        opacity: .9;
+        transform: scale(.88);
+        opacity: .55;
       }
       70%{
-        transform: scale(1.5);
+        transform: scale(1.28);
         opacity: 0;
       }
       100%{
-        transform: scale(1.5);
+        transform: scale(1.28);
         opacity: 0;
       }
     }
