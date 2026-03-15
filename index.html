@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portal Interno | Sunbolt Tech</title>
+  <title>Informações Internas - Sunbolt Flex</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,1316 +11,754 @@
 
   <style>
     :root{
-      --bg: #eef3ef;
-      --surface: rgba(255,255,255,.72);
-      --surface-strong: rgba(255,255,255,.9);
-      --card: rgba(255,255,255,.82);
-      --text: #0d1b12;
-      --text-soft: #5d6b63;
-      --line: rgba(16,30,21,.08);
+      --bg-dark: #050d18;
+      --bg-mid: #091528;
+      --bg-light: #0d2340;
 
-      --green: #2f7d4a;
-      --green-2: #4da56c;
-      --green-dark: #1d4f2f;
-      --green-soft: rgba(47,125,74,.09);
+      --card: rgba(255,255,255,.10);
+      --card-strong: rgba(255,255,255,.13);
+      --text: #eef6ff;
+      --muted: rgba(231,240,255,.68);
+      --border: rgba(255,255,255,.12);
 
-      --shadow-xl: 0 30px 80px rgba(19, 39, 26, 0.10);
-      --shadow-lg: 0 18px 40px rgba(19, 39, 26, 0.08);
-      --shadow-md: 0 10px 24px rgba(19, 39, 26, 0.06);
+      --green: #1db954;
+      --green-soft-1: rgba(29,185,84,.16);
+      --green-soft-2: rgba(29,185,84,.08);
+      --green-border: rgba(29,185,84,.30);
+      --green-glow: rgba(29,185,84,.16);
 
-      --radius-xxl: 30px;
-      --radius-xl: 24px;
+      --blue1: #0c58c9;
+      --blue2: #2c7df0;
+      --blue-border: rgba(44,125,240,.28);
+      --blue-glow: rgba(44,125,240,.18);
+
+      --shadow: 0 24px 70px rgba(0,0,0,.34);
+      --shadow-soft: 0 14px 28px rgba(0,0,0,.18);
+
+      --radius-xl: 26px;
       --radius-lg: 18px;
-      --radius-md: 14px;
+      --radius-md: 12px;
 
-      --container: 1280px;
+      --tap: 40px;
+      --icon: 36px;
+      --pad: 12px;
     }
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
+    *{ box-sizing: border-box; }
+
+    html, body{
+      min-height: 100%;
     }
 
     html{
-      scroll-behavior:smooth;
+      scroll-behavior: smooth;
     }
 
     body{
+      margin: 0;
       font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(77,165,108,.12), transparent 30%),
-        radial-gradient(circle at top right, rgba(47,125,74,.10), transparent 35%),
-        linear-gradient(180deg, #f6faf7 0%, #edf5ef 100%);
       color: var(--text);
-      min-height:100vh;
-      line-height:1.5;
-      padding: 28px 18px 60px;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      display:block;
-      max-width:100%;
-    }
-
-    .shell{
-      max-width: var(--container);
-      margin: 0 auto;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding: 10px 6px 18px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
-    .brand-logo{
-      width:58px;
-      height:58px;
-      border-radius:18px;
-      overflow:hidden;
-      background:#fff;
-      box-shadow: var(--shadow-md);
-      border:1px solid rgba(0,0,0,.04);
-      flex: 0 0 auto;
-    }
-
-    .brand-logo img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      background:#fff;
-      padding:8px;
-    }
-
-    .brand-meta small{
-      display:block;
-      font-size:12px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color: var(--green);
-      font-weight:700;
-      margin-bottom:4px;
-    }
-
-    .brand-meta h1{
-      font-size:22px;
-      line-height:1.1;
-      font-weight:800;
-      letter-spacing:-.03em;
-    }
-
-    .top-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .pill-btn{
-      height:46px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.75);
-      backdrop-filter: blur(10px);
-      font-weight:600;
-      color:#193021;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      transition:.22s ease;
-      box-shadow: 0 6px 20px rgba(18,33,24,.04);
-      cursor:pointer;
-    }
-
-    .pill-btn:hover{
-      transform:translateY(-1px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(47,125,74,.18);
-    }
-
-    .pill-btn.primary{
-      background: linear-gradient(135deg, var(--green-dark), var(--green));
-      color:#fff;
-      border-color: transparent;
-    }
-
-    .hero{
-      position:relative;
-      min-height: 620px;
-      border-radius: var(--radius-xxl);
-      overflow:hidden;
-      box-shadow: var(--shadow-xl);
-      border:1px solid rgba(255,255,255,.55);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 18px 10px;
+      overflow-x: hidden;
+      position: relative;
+      isolation: isolate;
       background:
-        linear-gradient(90deg, rgba(8,24,15,.78) 0%, rgba(8,24,15,.50) 38%, rgba(8,24,15,.12) 100%),
-        url('solar-bg.jpg') center/cover no-repeat;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      padding: 28px;
+        radial-gradient(1000px 600px at 0% 0%, rgba(44,125,240,.18), transparent 55%),
+        radial-gradient(900px 600px at 100% 0%, rgba(29,185,84,.12), transparent 52%),
+        linear-gradient(135deg, #040b14 0%, #081425 32%, #0b1f38 68%, #0a3650 100%);
     }
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      padding:1px;
-      background: linear-gradient(135deg, rgba(255,255,255,.55), rgba(255,255,255,.06), rgba(255,255,255,.24));
+    body::before,
+    body::after{
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(30px);
+      opacity: .7;
+    }
+
+    body::before{
+      width: 320px;
+      height: 320px;
+      top: 5%;
+      left: -90px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(44,125,240,.28) 0%, rgba(44,125,240,0) 68%);
+      animation: floatGlow1 12s ease-in-out infinite;
+    }
+
+    body::after{
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      bottom: 4%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,185,84,.20) 0%, rgba(29,185,84,0) 68%);
+      animation: floatGlow2 14s ease-in-out infinite;
+    }
+
+    .bg-grid{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      opacity: .08;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+      animation: gridMove 18s linear infinite;
+    }
+
+    .bg-lines{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bg-lines::before,
+    .bg-lines::after{
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 1px;
+      left: -20%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+    }
+
+    .bg-lines::before{
+      top: 22%;
+      transform: rotate(-8deg);
+      animation: lineRun 10s linear infinite;
+    }
+
+    .bg-lines::after{
+      top: 72%;
+      transform: rotate(-6deg);
+      animation: lineRun 13s linear infinite reverse;
+    }
+
+    main.container{
+      width: 100%;
+      max-width: 640px;
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.07));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: 20px 16px;
+      backdrop-filter: blur(22px) saturate(145%);
+      -webkit-backdrop-filter: blur(22px) saturate(145%);
+      overflow: hidden;
+    }
+
+    main.container::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.03), rgba(29,185,84,.18));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
               mask-composite: exclude;
-      pointer-events:none;
+      pointer-events: none;
     }
 
-    .hero-nav{
-      position:relative;
-      z-index:1;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding: 4px 4px 0;
+    main.container::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(450px 140px at 18% 0%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(350px 180px at 100% 100%, rgba(29,185,84,.06), transparent 60%);
+      pointer-events: none;
     }
 
-    .hero-nav-left{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:#fff;
+    header{
+      text-align: center;
+      padding: 4px 4px 2px;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-mini-logo{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      overflow:hidden;
-      background: rgba(255,255,255,.92);
-      flex:0 0 auto;
-      border:1px solid rgba(255,255,255,.2);
+    .profile-wrap{
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 12px;
+      padding: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 14px 32px rgba(0,0,0,.20);
     }
 
-    .hero-mini-logo img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      padding:6px;
-      background:#fff;
+    .profile-img{
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: contain;
+      background: rgba(255,255,255,.96);
+      display: block;
     }
 
-    .hero-brand-name{
-      font-size:19px;
-      font-weight:700;
-      letter-spacing:-.02em;
+    h1{
+      margin: 4px 0 6px;
+      font-size: 18px;
+      letter-spacing: .16em;
+      font-weight: 800;
+      color: #ffffff;
     }
 
-    .hero-nav-links{
-      display:flex;
-      align-items:center;
-      gap:28px;
-      color: rgba(255,255,255,.92);
-      font-size:14px;
-      font-weight:500;
-      flex-wrap:wrap;
-      justify-content:center;
+    .description{
+      margin: 0 auto 12px;
+      max-width: 56ch;
+      font-size: 12.6px;
+      color: var(--muted);
+      line-height: 1.45;
     }
 
-    .hero-nav-links a{
-      opacity:.86;
-      transition:.2s ease;
+    .divider{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      margin: 14px 0 6px;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-nav-links a:hover{
-      opacity:1;
+    section{
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
     }
 
-    .hero-contact{
-      background: rgba(255,255,255,.14);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.28);
-      backdrop-filter: blur(12px);
+    .section-title{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(235,244,255,.76);
+      margin: 16px 4px 10px;
     }
 
-    .hero-main{
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .8fr);
-      gap:24px;
-      align-items:end;
-      margin-top: 40px;
-      flex:1;
+    .section-title .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #28e76b;
+      position: relative;
+      flex: 0 0 auto;
+      box-shadow:
+        0 0 6px rgba(40,231,107,.55),
+        0 0 14px rgba(40,231,107,.25);
+      animation: pulseDotSoft 2.4s ease-in-out infinite;
     }
 
-    .hero-content{
-      max-width: 680px;
-      align-self:center;
-      padding: 20px 8px 10px;
+    .section-title .dot::before{
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(40,231,107,.20) 0%, rgba(40,231,107,0) 72%);
+      animation: pulseRingSoft 2.4s ease-out infinite;
     }
 
-    .hero-tag{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 14px;
-      border-radius:999px;
-      background: rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.22);
-      color:#fff;
-      font-size:13px;
-      font-weight:600;
+    .section-title .dot::after{
+      content: "";
+      position: absolute;
+      inset: -13px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(40,231,107,.10) 0%, rgba(40,231,107,0) 76%);
+      animation: pulseRingSoft 2.4s ease-out infinite .5s;
+    }
+
+    .grid{
+      display: grid;
+      gap: 10px;
+    }
+
+    @media (min-width: 700px){
+      .grid.two-col{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .item{
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: var(--pad);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.10);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+      min-width: 0;
       backdrop-filter: blur(10px);
-      margin-bottom:18px;
+      -webkit-backdrop-filter: blur(10px);
+      overflow: hidden;
     }
 
-    .hero-content h2{
-      color:#fff;
-      font-size: clamp(40px, 5vw, 78px);
-      line-height:.98;
-      letter-spacing:-.05em;
-      font-weight:800;
-      max-width: 760px;
+    .item::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.05) 35%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform .8s ease;
+      pointer-events: none;
     }
 
-    .hero-content p{
-      margin-top:20px;
-      font-size:18px;
-      color: rgba(255,255,255,.84);
-      max-width: 620px;
+    .item:hover::before{
+      transform: translateX(120%);
     }
 
-    .hero-buttons{
-      margin-top:28px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
+    .item:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: var(--shadow-soft);
+      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
     }
 
-    .btn-hero{
-      min-height:52px;
-      padding: 0 20px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      font-size:15px;
-      font-weight:700;
-      transition:.22s ease;
-      border:1px solid transparent;
+    .open{
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
     }
 
-    .btn-hero.primary{
-      background:#fff;
-      color:#132418;
-    }
-
-    .btn-hero.primary:hover{
-      transform:translateY(-2px);
-      box-shadow: 0 16px 30px rgba(0,0,0,.16);
-    }
-
-    .btn-hero.secondary{
-      background: rgba(255,255,255,.10);
-      color:#fff;
-      border-color: rgba(255,255,255,.24);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-hero.secondary:hover{
-      transform:translateY(-2px);
-      background: rgba(255,255,255,.14);
-    }
-
-    .hero-side-card{
-      justify-self:end;
-      width:100%;
-      max-width: 360px;
-      background: rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.24);
-      border-radius: 28px;
-      padding: 22px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 18px 42px rgba(0,0,0,.12);
-      color:#fff;
-    }
-
-    .hero-side-card small{
-      display:block;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size:11px;
-      color: rgba(255,255,255,.72);
-      margin-bottom:10px;
-      font-weight:700;
-    }
-
-    .hero-side-card h3{
-      font-size:24px;
-      line-height:1.15;
-      margin-bottom:10px;
-      font-weight:800;
-      letter-spacing:-.03em;
-    }
-
-    .hero-side-card p{
-      color: rgba(255,255,255,.80);
-      font-size:14px;
-      margin-bottom:18px;
-    }
-
-    .hero-side-list{
-      display:grid;
-      gap:12px;
-    }
-
-    .hero-side-item{
-      padding:12px 14px;
-      border-radius:16px;
+    .icon{
+      width: var(--icon);
+      height: var(--icon);
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
       background: rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.14);
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      font-size:14px;
+      border: 1px solid rgba(255,255,255,.10);
+      flex: 0 0 auto;
+      font-size: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
     }
 
-    .hero-side-item strong{
-      font-size:15px;
+    .meta{
+      flex: 1;
+      min-width: 0;
     }
 
-    .stats-row{
-      position:relative;
-      z-index:1;
-      margin-top: 24px;
-      display:grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap:14px;
+    .meta .title{
+      font-weight: 600;
+      font-size: 13.6px;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #f8fbff;
     }
 
-    .stat-card{
-      background: rgba(255,255,255,.94);
-      border-radius: 22px;
-      padding: 24px 22px;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid rgba(0,0,0,.03);
+    .meta .hint{
+      margin: 3px 0 0;
+      font-size: 11.4px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .stat-card strong{
-      display:block;
-      font-size: clamp(28px, 3vw, 44px);
-      line-height:1;
-      letter-spacing:-.05em;
-      color:#122117;
-      margin-bottom:10px;
+    .actions{
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 0 0 auto;
     }
 
-    .stat-card span{
-      display:block;
-      color: var(--text-soft);
-      font-size:14px;
-      line-height:1.45;
+    .copy-btn{
+      width: var(--tap);
+      height: var(--tap);
+      border-radius: 11px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+      user-select: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    .content{
-      margin-top: 34px;
-      display:grid;
-      grid-template-columns: 290px minmax(0, 1fr);
-      gap:24px;
-      align-items:start;
+    .copy-btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(29,185,84,.40);
+      background: rgba(255,255,255,.12);
+      box-shadow: 0 10px 20px rgba(29,185,84,.10);
     }
 
-    .sidebar{
-      position:sticky;
-      top:18px;
-      background: var(--surface);
-      border:1px solid rgba(255,255,255,.6);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(14px);
-      padding: 22px;
+    .arrow{
+      color: rgba(255,255,255,.56);
+      font-size: 16px;
+      padding: 0 2px;
+      user-select: none;
     }
 
-    .sidebar h3{
-      font-size:16px;
-      font-weight:800;
-      margin-bottom:14px;
-      letter-spacing:-.02em;
+    .copy-btn:focus-visible,
+    .item:focus-within{
+      outline: 3px solid rgba(44,125,240,.18);
+      outline-offset: 2px;
     }
 
-    .sidebar p{
-      font-size:14px;
-      color: var(--text-soft);
-      margin-bottom:18px;
+    .item.sunbolt-flex{
+      background: linear-gradient(135deg, var(--green-soft-1), var(--green-soft-2)), rgba(255,255,255,.05);
+      border-color: var(--green-border);
     }
 
-    .sidebar-nav{
-      display:grid;
-      gap:10px;
+    .item.sunbolt-flex:hover{
+      border-color: rgba(29,185,84,.42);
+      box-shadow: 0 14px 30px var(--green-glow);
     }
 
-    .sidebar-link{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      min-height:48px;
-      padding: 0 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.7);
-      border: 1px solid rgba(16,30,21,.06);
-      transition:.2s ease;
-      font-size:14px;
-      font-weight:600;
+    .item.sunbolt{
+      background: linear-gradient(135deg, rgba(12,88,201,.14), rgba(44,125,240,.08)), rgba(255,255,255,.05);
+      border-color: var(--blue-border);
     }
 
-    .sidebar-link:hover{
-      transform:translateX(2px);
-      border-color: rgba(47,125,74,.16);
-      color: var(--green-dark);
-      box-shadow: var(--shadow-md);
+    .item.sunbolt:hover{
+      border-color: rgba(44,125,240,.42);
+      box-shadow: 0 14px 30px var(--blue-glow);
     }
 
-    .main-panel{
-      display:grid;
-      gap:22px;
+    footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      text-align: center;
+      font-size: 11.5px;
+      color: rgba(235,244,255,.58);
+      position: relative;
+      z-index: 1;
+      letter-spacing: .04em;
     }
 
-    .section-panel{
-      background: var(--surface);
-      border:1px solid rgba(255,255,255,.6);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg);
-      backdrop-filter: blur(14px);
-      overflow:hidden;
-    }
-
-    .section-head{
-      padding: 24px 26px 18px;
-      border-bottom: 1px solid rgba(16,30,21,.06);
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .section-kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      color: var(--green);
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      margin-bottom:8px;
-    }
-
-    .section-kicker::before{
-      content:"";
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background: linear-gradient(135deg, var(--green), var(--green-2));
-      box-shadow: 0 0 0 6px rgba(47,125,74,.10);
-    }
-
-    .section-head h3{
-      font-size:28px;
-      line-height:1.1;
-      letter-spacing:-.04em;
-      font-weight:800;
-    }
-
-    .section-head p{
-      color: var(--text-soft);
-      font-size:14px;
-      margin-top:6px;
-      max-width:720px;
-    }
-
-    .section-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      min-height:38px;
-      padding: 0 14px;
-      border-radius:999px;
-      background: rgba(47,125,74,.08);
-      color: var(--green-dark);
-      border:1px solid rgba(47,125,74,.10);
-      font-size:13px;
-      font-weight:700;
-    }
-
-    .cards{
-      padding: 22px 26px 26px;
-      display:grid;
-      gap:16px;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-    }
-
-    .cards.one{
-      grid-template-columns: 1fr;
-    }
-
-    .cards.three{
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-
-    .portal-card{
-      position:relative;
-      background: var(--card);
-      border:1px solid rgba(16,30,21,.07);
-      border-radius: 22px;
-      padding: 18px;
-      transition:.22s ease;
-      box-shadow: 0 8px 20px rgba(19,39,26,.05);
-      overflow:hidden;
-    }
-
-    .portal-card:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 18px 34px rgba(19,39,26,.10);
-      border-color: rgba(47,125,74,.16);
-    }
-
-    .portal-card::after{
-      content:"";
-      position:absolute;
-      inset:auto -30% -35% auto;
-      width:160px;
-      height:160px;
-      border-radius:50%;
-      background: radial-gradient(circle, rgba(47,125,74,.08), transparent 70%);
-      pointer-events:none;
-    }
-
-    .portal-top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:16px;
-    }
-
-    .portal-main{
-      display:flex;
-      align-items:flex-start;
-      gap:14px;
-      min-width:0;
-      flex:1;
-    }
-
-    .portal-icon{
-      width:52px;
-      height:52px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      font-size:22px;
-      background: linear-gradient(135deg, rgba(47,125,74,.14), rgba(77,165,108,.08));
-      color: var(--green-dark);
-      border:1px solid rgba(47,125,74,.10);
-      flex:0 0 auto;
-    }
-
-    .portal-title-wrap{
-      min-width:0;
-    }
-
-    .portal-title{
-      font-size:17px;
-      line-height:1.2;
-      font-weight:700;
-      letter-spacing:-.03em;
-      margin-bottom:6px;
-      color:#102117;
-    }
-
-    .portal-subtitle{
-      font-size:13px;
-      color: var(--text-soft);
-    }
-
-    .portal-actions{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      flex:0 0 auto;
-    }
-
-    .mini-btn{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      border:1px solid rgba(16,30,21,.08);
-      background: rgba(255,255,255,.8);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      transition:.18s ease;
-      font-size:16px;
-      color:#1a2c20;
-    }
-
-    .mini-btn:hover{
-      transform:translateY(-1px);
-      box-shadow: var(--shadow-md);
-      border-color: rgba(47,125,74,.18);
-    }
-
-    .portal-description{
-      font-size:14px;
-      color:#4f6057;
-      margin-bottom:18px;
-      min-height:42px;
-    }
-
-    .portal-footer{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .portal-tag{
-      display:inline-flex;
-      align-items:center;
-      min-height:34px;
-      padding:0 12px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      color: var(--green-dark);
-      background: rgba(47,125,74,.08);
-      border:1px solid rgba(47,125,74,.10);
-    }
-
-    .portal-link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      min-height:40px;
-      padding:0 16px;
-      border-radius:999px;
-      background: #112118;
-      color:#fff;
-      font-size:13px;
-      font-weight:700;
-      transition:.18s ease;
-    }
-
-    .portal-link:hover{
-      transform:translateY(-1px);
-      background:#0d1a12;
-    }
-
-    .grid-highlight{
-      background:
-        linear-gradient(135deg, rgba(47,125,74,.10), rgba(255,255,255,.74)),
-        rgba(255,255,255,.88);
-    }
-
-    .energy-highlight{
-      background:
-        linear-gradient(135deg, rgba(16,72,150,.08), rgba(255,255,255,.74)),
-        rgba(255,255,255,.88);
-    }
-
-    .footer{
-      margin-top: 26px;
-      padding: 20px 8px 0;
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-      color:#637168;
-      font-size:13px;
-    }
-
-    @media (max-width: 1160px){
-      .stats-row{
-        grid-template-columns: repeat(2, minmax(0,1fr));
+    @media (max-width: 520px){
+      main.container{
+        padding: 16px 12px;
+        border-radius: 20px;
       }
 
-      .content{
-        grid-template-columns: 1fr;
+      .profile-wrap{
+        width: 72px;
+        height: 72px;
       }
 
-      .sidebar{
-        position:relative;
-        top:auto;
+      h1{
+        font-size: 16px;
       }
 
-      .hero-main{
-        grid-template-columns: 1fr;
+      .description{
+        font-size: 12px;
       }
 
-      .hero-side-card{
-        justify-self:start;
-      }
-    }
-
-    @media (max-width: 880px){
-      .hero{
-        min-height: auto;
-        padding:20px;
+      :root{
+        --tap: 38px;
+        --icon: 34px;
+        --pad: 11px;
       }
 
-      .hero-nav{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .hero-nav-links{
-        gap:14px;
-        justify-content:flex-start;
-      }
-
-      .cards,
-      .cards.three{
-        grid-template-columns: 1fr;
-      }
-
-      .topbar{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-
-    @media (max-width: 640px){
-      body{
-        padding: 16px 12px 40px;
-      }
-
-      .hero-content h2{
-        font-size: 42px;
-      }
-
-      .hero-content p{
-        font-size:15px;
-      }
-
-      .stats-row{
-        grid-template-columns: 1fr;
-      }
-
-      .section-head{
-        padding: 20px 18px 16px;
-      }
-
-      .cards{
-        padding: 18px;
-      }
-
-      .sidebar{
-        padding:18px;
-      }
-
-      .brand-meta h1{
-        font-size:18px;
+      .meta .hint{
+        display: none;
       }
     }
 
     @media (prefers-reduced-motion: reduce){
-      *{
-        scroll-behavior:auto !important;
+      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after,
+      .section-title .dot, .section-title .dot::before, .section-title .dot::after{
+        transition: none !important;
+        animation: none !important;
       }
 
-      .portal-card,
-      .pill-btn,
-      .mini-btn,
-      .portal-link,
-      .btn-hero,
-      .sidebar-link{
-        transition:none !important;
+      .item:hover{
+        transform: none;
       }
+    }
 
-      .portal-card:hover,
-      .pill-btn:hover,
-      .mini-btn:hover,
-      .portal-link:hover,
-      .btn-hero:hover,
-      .sidebar-link:hover{
-        transform:none !important;
+    @keyframes floatGlow1{
+      0%,100%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(18px,14px) scale(1.05); }
+    }
+
+    @keyframes floatGlow2{
+      0%,100%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(-22px,-14px) scale(1.06); }
+    }
+
+    @keyframes gridMove{
+      0%{ transform: translateY(0); }
+      100%{ transform: translateY(38px); }
+    }
+
+    @keyframes lineRun{
+      0%{ transform: translateX(-10%) rotate(-8deg); opacity: .20; }
+      50%{ opacity: .42; }
+      100%{ transform: translateX(10%) rotate(-8deg); opacity: .20; }
+    }
+
+    @keyframes pulseDotSoft{
+      0%, 100%{
+        transform: scale(1);
+        box-shadow:
+          0 0 6px rgba(40,231,107,.55),
+          0 0 14px rgba(40,231,107,.25);
+      }
+      50%{
+        transform: scale(1.08);
+        box-shadow:
+          0 0 9px rgba(40,231,107,.75),
+          0 0 20px rgba(40,231,107,.35);
+      }
+    }
+
+    @keyframes pulseRingSoft{
+      0%{
+        transform: scale(.88);
+        opacity: .55;
+      }
+      70%{
+        transform: scale(1.28);
+        opacity: 0;
+      }
+      100%{
+        transform: scale(1.28);
+        opacity: 0;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="shell">
+  <div class="bg-grid"></div>
+  <div class="bg-lines"></div>
 
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-logo">
-          <img src="123.JPG" alt="Logo Sunbolt">
-        </div>
-        <div class="brand-meta">
-          <small>Portal corporativo</small>
-          <h1>Sunbolt Tech · Informações Internas</h1>
-        </div>
+  <main class="container">
+    <header>
+      <div class="profile-wrap">
+        <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
       </div>
-
-      <div class="top-actions">
-        <a href="#simulador" class="pill-btn">Simulador</a>
-        <a href="#cadastros" class="pill-btn">Cadastros</a>
-        <a href="#usinas" class="pill-btn primary">Acessar relatórios</a>
-      </div>
+      <h1>INFORMAÇÕES INTERNAS</h1>
+      <p class="description">
+        Central rápida de acessos, relatórios, formulários e ferramentas da operação Sunbolt.
+      </p>
     </header>
 
-    <section class="hero">
-      <div class="hero-nav">
-        <div class="hero-nav-left">
-          <div class="hero-mini-logo">
-            <img src="123.JPG" alt="Logo Sunbolt">
+    <div class="divider"></div>
+
+    <section>
+      <div class="section-title"><span class="dot"></span> Usinas c/ Clientes</div>
+      <div class="grid">
+
+        <div class="item sunbolt-flex">
+          <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9" target="_blank" rel="noopener">
+            <div class="icon">🌿</div>
+            <div class="meta">
+              <p class="title">Informações Sunbolt Flex</p>
+              <p class="hint">Relatório Power BI</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
+            <span class="arrow">›</span>
           </div>
-          <div class="hero-brand-name">Sunbolt Energy</div>
         </div>
 
-        <nav class="hero-nav-links">
-          <a href="#usinas">Usinas</a>
-          <a href="#digital-grid">Digital Grid</a>
-          <a href="#simulador">Simulador</a>
-          <a href="#cadastros">Cadastros</a>
-          <a href="#vendedores">Vendedores</a>
-        </nav>
+        <div class="item sunbolt">
+          <a class="open" href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank" rel="noopener">
+            <div class="icon">⚡</div>
+            <div class="meta">
+              <p class="title">Informações Sunbolt Energy</p>
+              <p class="hint">Relatório Power BI</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">⧉</button>
+            <span class="arrow">›</span>
+          </div>
+        </div>
 
-        <a href="#avaliacao" class="pill-btn hero-contact">Contato Interno ↗</a>
       </div>
+    </section>
 
-      <div class="hero-main">
-        <div class="hero-content">
-          <span class="hero-tag">Energia sustentável • Gestão inteligente • Performance comercial</span>
+    <section>
+      <div class="section-title"><span class="dot"></span> Digital Grid</div>
+      <div class="grid">
 
-          <h2>
-            Soluções em energia limpa para uma operação mais eficiente
-          </h2>
-
-          <p>
-            Portal interno da Sunbolt para centralizar relatórios, sistemas, formulários,
-            simuladores e ferramentas de gestão com uma experiência moderna, profissional e alinhada ao setor de energia renovável.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#simulador" class="btn-hero primary">Simular economia</a>
-            <a href="#usinas" class="btn-hero secondary">Ver relatórios</a>
+        <div class="item">
+          <a class="open" href="https://gestao.dg.energy/login/" target="_blank" rel="noopener">
+            <div class="icon">📈</div>
+            <div class="meta">
+              <p class="title">Acesso sistema</p>
+              <p class="hint">Portal de gestão</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://gestao.dg.energy/login/')">⧉</button>
+            <span class="arrow">›</span>
           </div>
         </div>
 
-        <aside class="hero-side-card">
-          <small>Ecossistema Sunbolt</small>
-          <h3>Painel central de operação e crescimento</h3>
-          <p>
-            Acesse rapidamente as principais ferramentas do time comercial, operação e gestão.
-          </p>
-
-          <div class="hero-side-list">
-            <div class="hero-side-item">
-              <span>Relatórios</span>
-              <strong>Power BI</strong>
+        <div class="item">
+          <a class="open" href="https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217" target="_blank" rel="noopener">
+            <div class="icon">🎥</div>
+            <div class="meta">
+              <p class="title">Vídeo Aula (1) Cadastros e Criação de rateio</p>
+              <p class="hint">Notion</p>
             </div>
-            <div class="hero-side-item">
-              <span>Gestão</span>
-              <strong>Digital Grid</strong>
-            </div>
-            <div class="hero-side-item">
-              <span>Captação</span>
-              <strong>Cadastros & Forms</strong>
-            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217')">⧉</button>
+            <span class="arrow">›</span>
           </div>
-        </aside>
+        </div>
+
+        <div class="item">
+          <a class="open" href="https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7" target="_blank" rel="noopener">
+            <div class="icon">🎬</div>
+            <div class="meta">
+              <p class="title">Vídeo Aula (2) Faturamento e Emissão de Relatórios</p>
+              <p class="hint">Notion</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link"
+              onclick="copiarLink(this, 'https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7')">⧉</button>
+            <span class="arrow">›</span>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="stats-row">
-        <div class="stat-card">
-          <strong>2</strong>
-          <span>Painéis centrais de informação com visão Sunbolt Flex e Sunbolt Energy.</span>
-        </div>
-        <div class="stat-card">
-          <strong>3+</strong>
-          <span>Ferramentas principais para gestão, faturamento, relatórios e treinamento.</span>
-        </div>
-        <div class="stat-card">
-          <strong>10+</strong>
-          <span>Formulários e fluxos de cadastro para usinas, clientes e vendedores.</span>
-        </div>
-        <div class="stat-card">
-          <strong>1</strong>
-          <span>Portal unificado para acelerar a rotina comercial e operacional.</span>
+    <section>
+      <div class="section-title"><span class="dot"></span> Simulador</div>
+      <div class="grid">
+        <div class="item">
+          <a class="open" href="https://sunboltflex.github.io/simulador-energia-15/" target="_blank" rel="noopener">
+            <div class="icon">🧮</div>
+            <div class="meta">
+              <p class="title">Simulador Clientes</p>
+              <p class="hint">Calculadora</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://sunboltflex.github.io/simulador-energia-15/')">⧉</button>
+            <span class="arrow">›</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="content">
-      <aside class="sidebar">
-        <h3>Navegação rápida</h3>
-        <p>Escolha uma área e vá direto para o que precisa dentro da operação Sunbolt.</p>
+    <section>
+      <div class="section-title"><span class="dot"></span> Cadastros</div>
+      <div class="grid">
 
-        <div class="sidebar-nav">
-          <a class="sidebar-link" href="#usinas"><span>Usinas c/ Clientes</span><span>›</span></a>
-          <a class="sidebar-link" href="#digital-grid"><span>Digital Grid</span><span>›</span></a>
-          <a class="sidebar-link" href="#simulador"><span>Simulador</span><span>›</span></a>
-          <a class="sidebar-link" href="#cadastros"><span>Cadastros</span><span>›</span></a>
-          <a class="sidebar-link" href="#vendedores"><span>Vendedores</span><span>›</span></a>
-          <a class="sidebar-link" href="#avaliacao"><span>Avaliação</span><span>›</span></a>
+        <div class="item">
+          <a class="open" href="https://forms.gle/x1ACmqLZTRzNP8ZH8" target="_blank" rel="noopener">
+            <div class="icon">🧾</div>
+            <div class="meta">
+              <p class="title">Cadastro de Clientes (15% a 20%)</p>
+              <p class="hint">Google Forms</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/x1ACmqLZTRzNP8ZH8')">⧉</button>
+            <span class="arrow">›</span>
+          </div>
         </div>
-      </aside>
 
-      <main class="main-panel">
-
-        <section class="section-panel" id="usinas">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Usinas c/ Clientes</div>
-              <h3>Relatórios estratégicos</h3>
-              <p>Visualizações gerenciais e operacionais para acompanhamento dos resultados da Sunbolt Flex e Sunbolt Energy.</p>
+        <div class="item">
+          <a class="open" href="https://forms.gle/waLHTt6Ps1CEyJkU6" target="_blank" rel="noopener">
+            <div class="icon">📝</div>
+            <div class="meta">
+              <p class="title">Cadastro de Clientes (25%)</p>
+              <p class="hint">Google Forms</p>
             </div>
-            <div class="section-badge">Power BI integrado</div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/waLHTt6Ps1CEyJkU6')">⧉</button>
+            <span class="arrow">›</span>
           </div>
+        </div>
 
-          <div class="cards">
-            <article class="portal-card grid-highlight">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">🌿</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Informações Sunbolt Flex</div>
-                    <div class="portal-subtitle">Relatório executivo Power BI</div>
-                  </div>
-                </div>
-
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Acesso central às informações operacionais e comerciais da Sunbolt Flex.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Dashboard principal</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9">Abrir relatório ↗</a>
-              </div>
-            </article>
-
-            <article class="portal-card energy-highlight">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">⚡</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Informações Sunbolt Energy</div>
-                    <div class="portal-subtitle">Relatório executivo Power BI</div>
-                  </div>
-                </div>
-
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Visualização dedicada aos dados, indicadores e acompanhamento da Sunbolt Energy.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Visão corporativa</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890">Abrir relatório ↗</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-panel" id="digital-grid">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Digital Grid</div>
-              <h3>Operação, gestão e treinamento</h3>
-              <p>Ferramentas e materiais para apoiar a rotina do time com mais velocidade e padronização.</p>
+        <div class="item">
+          <a class="open" href="https://forms.gle/HnehrXA6AzY8tNuu6" target="_blank" rel="noopener">
+            <div class="icon">🏭</div>
+            <div class="meta">
+              <p class="title">Cadastro de Usinas</p>
+              <p class="hint">Google Forms</p>
             </div>
-            <div class="section-badge">Sistema + Notion</div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/HnehrXA6AzY8tNuu6')">⧉</button>
+            <span class="arrow">›</span>
           </div>
+        </div>
 
-          <div class="cards">
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">📈</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Acesso sistema</div>
-                    <div class="portal-subtitle">Portal de gestão Digital Grid</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://gestao.dg.energy/login/')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Entre no ambiente de gestão da plataforma Digital Grid para acompanhamento operacional.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Sistema oficial</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://gestao.dg.energy/login/">Abrir sistema ↗</a>
-              </div>
-            </article>
-
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">🎥</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Vídeo Aula (1)</div>
-                    <div class="portal-subtitle">Cadastros e criação de rateio</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Material de apoio para a equipe compreender o fluxo de cadastros e montagem de rateio.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Treinamento</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217">Abrir conteúdo ↗</a>
-              </div>
-            </article>
-
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">🎬</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Vídeo Aula (2)</div>
-                    <div class="portal-subtitle">Faturamento e emissão de relatórios</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Conteúdo prático para apoiar a operação financeira e a geração de relatórios.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Capacitação</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7">Abrir conteúdo ↗</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-panel" id="simulador">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Simulador</div>
-              <h3>Ferramenta comercial</h3>
-              <p>Estimativa rápida para apoiar apresentações, propostas e abordagens com clientes.</p>
-            </div>
-            <div class="section-badge">Cálculo rápido</div>
-          </div>
-
-          <div class="cards one">
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">🧮</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Simulador Clientes</div>
-                    <div class="portal-subtitle">Calculadora de economia</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://sunboltflex.github.io/simulador-energia-15/')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Simule cenários de economia energética com rapidez para apoiar o time comercial.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Ferramenta de vendas</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://sunboltflex.github.io/simulador-energia-15/">Abrir simulador ↗</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-panel" id="cadastros">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Cadastros</div>
-              <h3>Formulários operacionais</h3>
-              <p>Fluxos de entrada para clientes e usinas, organizados por tipo de campanha e necessidade operacional.</p>
-            </div>
-            <div class="section-badge">Google Forms</div>
-          </div>
-
-          <div class="cards">
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">🧾</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Cadastro de Clientes (15% a 20%)</div>
-                    <div class="portal-subtitle">Fluxo comercial</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" onclick="copiarLink(this, 'https://forms.gle/x1ACmqLZTRzNP8ZH8')" aria-label="Copiar link">⧉</button>
-                </div>
-              </div>
-              <p class="portal-description">Formulário de cadastro para clientes nas campanhas de 15% a 20%.</p>
-              <div class="portal-footer">
-                <span class="portal-tag">Clientes</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/x1ACmqLZTRzNP8ZH8">Abrir formulário ↗</a>
-              </div>
-            </article>
-
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">📝</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Cadastro de Clientes (25%)</div>
-                    <div class="portal-subtitle">Fluxo comercial</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" onclick="copiarLink(this, 'https://forms.gle/waLHTt6Ps1CEyJkU6')" aria-label="Copiar link">⧉</button>
-                </div>
-              </div>
-              <p class="portal-description">Cadastro para clientes com campanha específica de 25% de economia.</p>
-              <div class="portal-footer">
-                <span class="portal-tag">Captação</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/waLHTt6Ps1CEyJkU6">Abrir formulário ↗</a>
-              </div>
-            </article>
-
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">🏭</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Cadastro de Usinas</div>
-                    <div class="portal-subtitle">Fluxo operacional</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" onclick="copiarLink(this, 'https://forms.gle/HnehrXA6AzY8tNuu6')" aria-label="Copiar link">⧉</button>
-                </div>
-              </div>
-              <p class="portal-description">Entrada padronizada de informações para novos cadastros de usinas.</p>
-              <div class="portal-footer">
-                <span class="portal-tag">Usinas</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/HnehrXA6AzY8tNuu6">Abrir formulário ↗</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-panel" id="vendedores">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Vendedores</div>
-              <h3>Formulários individuais</h3>
-              <p>Acessos rápidos para o time comercial com organização por vendedor.</p>
-            </div>
-            <div class="section-badge">Equipe comercial</div>
-          </div>
-
-          <div class="cards three">
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Denis</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/wByNg74Fn6xMuyFb9')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Denis.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/wByNg74Fn6xMuyFb9">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Luan</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/T2BUixaqmfeRuN5B8')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Luan.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/T2BUixaqmfeRuN5B8">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Edilson</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/24QAtQ4rWqdQYGEW6')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Edilson.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/24QAtQ4rWqdQYGEW6">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Flávio</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/AUPEafG4n1zGEbHQ8')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Flávio.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/AUPEafG4n1zGEbHQ8">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Janaina Carla</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/zgAhvNk1YHDmD4Fh8')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário da vendedora Janaina Carla.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/zgAhvNk1YHDmD4Fh8">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Celiane - Quixadá/CE</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/YxwZpTMivf8NkKTaA')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário da vendedora Celiane.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/YxwZpTMivf8NkKTaA">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Weber</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/ZRWKmtJSdkuwRfrQ6')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Weber.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/ZRWKmtJSdkuwRfrQ6">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Thyago Soares</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/LSbwc9zinov51cmv7')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Thyago Soares.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/LSbwc9zinov51cmv7">Abrir ↗</a></div></article>
-
-            <article class="portal-card"><div class="portal-top"><div class="portal-main"><div class="portal-icon">👤</div><div class="portal-title-wrap"><div class="portal-title">Elton</div><div class="portal-subtitle">Formulário individual</div></div></div><div class="portal-actions"><button class="mini-btn" onclick="copiarLink(this,'https://forms.gle/4whhKxnWh1NP7W6e7')" aria-label="Copiar link">⧉</button></div></div><p class="portal-description">Acesso rápido ao formulário do vendedor Elton.</p><div class="portal-footer"><span class="portal-tag">Vendedor</span><a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/4whhKxnWh1NP7W6e7">Abrir ↗</a></div></article>
-          </div>
-        </section>
-
-        <section class="section-panel" id="avaliacao">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Avaliação</div>
-              <h3>Feedback e acompanhamento</h3>
-              <p>Ferramenta de avaliação para acompanhamento do desempenho comercial.</p>
-            </div>
-            <div class="section-badge">Performance</div>
-          </div>
-
-          <div class="cards one">
-            <article class="portal-card">
-              <div class="portal-top">
-                <div class="portal-main">
-                  <div class="portal-icon">⭐</div>
-                  <div class="portal-title-wrap">
-                    <div class="portal-title">Avaliação dos Vendedores</div>
-                    <div class="portal-subtitle">Formulário de acompanhamento</div>
-                  </div>
-                </div>
-                <div class="portal-actions">
-                  <button class="mini-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/N32WEnn7UAA8E4jR8')">⧉</button>
-                </div>
-              </div>
-
-              <p class="portal-description">
-                Registro estruturado para avaliação e acompanhamento da equipe comercial.
-              </p>
-
-              <div class="portal-footer">
-                <span class="portal-tag">Avaliação interna</span>
-                <a class="portal-link" target="_blank" rel="noopener" href="https://forms.gle/N32WEnn7UAA8E4jR8">Abrir formulário ↗</a>
-              </div>
-            </article>
-          </div>
-        </section>
-
-      </main>
+      </div>
     </section>
 
-    <footer class="footer">
-      <span>© 2025 · Sunbolt Tech</span>
-      <span>Portal interno com foco em energia sustentável, performance e organização operacional.</span>
-    </footer>
+    <section>
+      <div class="section-title"><span class="dot"></span> Vendedores</div>
+      <div class="grid two-col">
 
-  </div>
+        <div class="item"><a class="open" href="https://forms.gle/wByNg74Fn6xMuyFb9" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Denis</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/wByNg74Fn6xMuyFb9')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/T2BUixaqmfeRuN5B8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Luan</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/T2BUixaqmfeRuN5B8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/24QAtQ4rWqdQYGEW6" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Edilson</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/24QAtQ4rWqdQYGEW6')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/AUPEafG4n1zGEbHQ8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Flávio</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/AUPEafG4n1zGEbHQ8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/zgAhvNk1YHDmD4Fh8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Janaina Carla</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/zgAhvNk1YHDmD4Fh8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/YxwZpTMivf8NkKTaA" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Celiane - Quixadá/CE</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/YxwZpTMivf8NkKTaA')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/ZRWKmtJSdkuwRfrQ6" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Weber</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/ZRWKmtJSdkuwRfrQ6')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/LSbwc9zinov51cmv7" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Thyago Soares</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/LSbwc9zinov51cmv7')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+        <div class="item"><a class="open" href="https://forms.gle/4whhKxnWh1NP7W6e7" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Elton</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/4whhKxnWh1NP7W6e7')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title"><span class="dot"></span> Avaliação</div>
+      <div class="grid">
+        <div class="item">
+          <a class="open" href="https://forms.gle/N32WEnn7UAA8E4jR8" target="_blank" rel="noopener">
+            <div class="icon">⭐</div>
+            <div class="meta">
+              <p class="title">Avaliação dos Vendedores</p>
+              <p class="hint">Google Forms</p>
+            </div>
+          </a>
+          <div class="actions">
+            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/N32WEnn7UAA8E4jR8')">⧉</button>
+            <span class="arrow">›</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 · Sunbolt Tech</footer>
+  </main>
 
   <script>
     function copiarLink(botao, link) {
@@ -1335,37 +773,19 @@
         return;
       }
 
-      navigator.clipboard.writeText(link)
-        .then(() => feedback(botao))
-        .catch(() => fallbackCopy(botao, link));
-    }
-
-    function fallbackCopy(botao, link){
-      const temp = document.createElement("textarea");
-      temp.value = link;
-      document.body.appendChild(temp);
-      temp.select();
-      document.execCommand("copy");
-      document.body.removeChild(temp);
-      feedback(botao);
+      navigator.clipboard.writeText(link).then(() => feedback(botao));
     }
 
     function feedback(botao){
       const original = botao.textContent;
-      const originalBg = botao.style.background;
-      const originalBorder = botao.style.borderColor;
-      const originalColor = botao.style.color;
-
       botao.textContent = "✅";
-      botao.style.background = "rgba(47,125,74,.12)";
-      botao.style.borderColor = "rgba(47,125,74,.28)";
-      botao.style.color = "#1d4f2f";
+      botao.style.borderColor = "rgba(29,185,84,.55)";
+      botao.style.background = "rgba(29,185,84,.18)";
 
       setTimeout(() => {
         botao.textContent = original;
-        botao.style.background = originalBg;
-        botao.style.borderColor = originalBorder;
-        botao.style.color = originalColor;
+        botao.style.borderColor = "";
+        botao.style.background = "";
       }, 1200);
     }
   </script>
