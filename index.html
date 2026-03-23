@@ -107,40 +107,6 @@
       color: #fff;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, var(--green), var(--green-2));
-      box-shadow: 0 10px 28px rgba(98,244,95,.24);
-      position: relative;
-      flex: 0 0 auto;
-    }
-
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      background: #091018;
-      border-radius: 999px;
-    }
-
-    .brand-mark::before {
-      width: 14px;
-      height: 26px;
-      left: 13px;
-      top: 8px;
-      transform: skew(-16deg);
-    }
-
-    .brand-mark::after {
-      width: 22px;
-      height: 8px;
-      left: 10px;
-      top: 17px;
-      transform: rotate(-25deg);
-    }
-
     .brand-name {
       font-size: 1.28rem;
       font-weight: 800;
@@ -246,7 +212,7 @@
       animation: pulse 2s infinite;
     }
 
-    .hero-title-logo {
+    .hero-logo {
       display: block;
       width: min(780px, 100%);
       max-width: 780px;
@@ -565,6 +531,7 @@
     @media (max-width: 820px) {
       .page { padding: 12px; }
       .shell { border-radius: 24px; }
+
       .navbar {
         position: relative;
         padding: 16px;
@@ -583,7 +550,11 @@
       .hero,
       .sections,
       footer { padding-left: 16px; padding-right: 16px; }
-      .hero-title-logo { width: min(560px, 100%); }
+
+      .hero-logo {
+        width: min(560px, 100%);
+      }
+
       .section-block { padding: 20px; border-radius: 24px; }
     }
 
@@ -626,7 +597,7 @@
 
       <section class="hero" id="topo">
         <div class="hero-bg">
-          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=80" alt="Painéis solares Sunbolt" />
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=80" alt="Painéis solares Sunbolt">
         </div>
 
         <div class="hero-content">
@@ -636,7 +607,7 @@
               Central profissional de acessos e operação
             </div>
 
-            <img src="sunbolt-hero-logo.png" alt="Sunbolt Energy Flex" class="hero-title-logo">
+            <img src="sunbolt-energy-flex.png.png" alt="Sunbolt Energy Flex" class="hero-logo">
 
             <p class="hero-text">
               Plataforma com acesso rápido aos principais relatórios, sistemas, formulários e ferramentas da operação. Estrutura premium, navegação objetiva e links organizados para acelerar sua rotina.
