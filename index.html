@@ -107,11 +107,10 @@
       color: #fff;
     }
 
-    .brand-logo {
-      display: block;
-      height: 72px;
-      width: auto;
-      object-fit: contain;
+    .brand-name {
+      font-size: 1.28rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
     }
 
     .nav-links {
@@ -149,7 +148,7 @@
     .hero {
       position: relative;
       min-height: 700px;
-      padding: 44px 30px 34px;
+      padding: 24px 30px 34px;
       overflow: hidden;
     }
 
@@ -182,12 +181,14 @@
       display: grid;
       grid-template-columns: 1.12fr .88fr;
       gap: 30px;
-      align-items: end;
+      align-items: start;
       min-height: 620px;
+      padding-top: 10px;
     }
 
     .hero-left {
-      padding-top: 50px;
+      padding-top: 0;
+      margin-top: -10px;
       max-width: 760px;
     }
 
@@ -200,7 +201,7 @@
       background: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.12);
       color: rgba(255,255,255,.88);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       backdrop-filter: blur(12px);
     }
 
@@ -225,7 +226,7 @@
     .hero-title span { display: block; }
 
     .hero-text {
-      margin-top: 20px;
+      margin-top: 16px;
       max-width: 600px;
       font-size: 1.04rem;
       line-height: 1.8;
@@ -233,7 +234,7 @@
     }
 
     .hero-shortcuts {
-      margin-top: 28px;
+      margin-top: 24px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -259,10 +260,11 @@
     .hero-right {
       display: grid;
       gap: 16px;
-      align-self: center;
+      align-self: start;
       justify-self: end;
       width: 100%;
       max-width: 380px;
+      padding-top: 6px;
     }
 
     .hero-panel {
@@ -534,15 +536,12 @@
     @media (max-width: 820px) {
       .page { padding: 12px; }
       .shell { border-radius: 24px; }
+
       .navbar {
         position: relative;
         padding: 16px;
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .brand-logo {
-        height: 58px;
       }
 
       .nav-links {
@@ -556,6 +555,7 @@
       .hero,
       .sections,
       footer { padding-left: 16px; padding-right: 16px; }
+
       .hero-title { font-size: clamp(3.2rem, 17vw, 5rem); }
       .section-block { padding: 20px; border-radius: 24px; }
     }
@@ -576,10 +576,6 @@
         flex-direction: column;
         align-items: flex-start;
       }
-
-      .brand-logo {
-        height: 48px;
-      }
     }
   </style>
 </head>
@@ -588,7 +584,7 @@
     <div class="shell">
       <header class="navbar">
         <a href="#topo" class="brand">
-          <img src="sunbolt-energy-flex.png" alt="Sunbolt Energy Flex" class="brand-logo">
+          <div class="brand-name">Sunbolt Energy | Sunbolt Flex</div>
         </a>
 
         <ul class="nav-links">
@@ -623,7 +619,6 @@
 
             <div class="hero-shortcuts">
               <a href="#usinas">Acessar relatórios</a>
-              <a href="#cadastros">Abrir formulários</a>
               <a href="#vendedores">Equipe comercial</a>
             </div>
           </div>
