@@ -1,793 +1,827 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Informações Internas - Sunbolt Flex</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunbolt Energy | Energia Inteligente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg-dark: #050d18;
-      --bg-mid: #091528;
-      --bg-light: #0d2340;
-
-      --card: rgba(255,255,255,.10);
-      --card-strong: rgba(255,255,255,.13);
-      --text: #eef6ff;
-      --muted: rgba(231,240,255,.68);
-      --border: rgba(255,255,255,.12);
-
-      --green: #1db954;
-      --green-soft-1: rgba(29,185,84,.16);
-      --green-soft-2: rgba(29,185,84,.08);
-      --green-border: rgba(29,185,84,.30);
-      --green-glow: rgba(29,185,84,.16);
-
-      --blue1: #0c58c9;
-      --blue2: #2c7df0;
-      --blue-border: rgba(44,125,240,.28);
-      --blue-glow: rgba(44,125,240,.18);
-
-      --shadow: 0 24px 70px rgba(0,0,0,.34);
-      --shadow-soft: 0 14px 28px rgba(0,0,0,.18);
-
-      --radius-xl: 26px;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-
-      --tap: 40px;
-      --icon: 36px;
-      --pad: 12px;
+    :root {
+      --bg: #0c131c;
+      --bg-2: #111a25;
+      --surface: rgba(255,255,255,0.08);
+      --surface-2: rgba(255,255,255,0.12);
+      --line: rgba(255,255,255,0.14);
+      --text: #f5f7fb;
+      --muted: rgba(245,247,251,0.72);
+      --green: #6dff65;
+      --green-2: #52e457;
+      --shadow: 0 30px 80px rgba(0,0,0,.38);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --container: 1320px;
     }
 
-    *{ box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body{
-      min-height: 100%;
-    }
+    html { scroll-behavior: smooth; }
 
-    html{
-      scroll-behavior: smooth;
-    }
-
-    body{
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(109,255,101,.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(255,255,255,.08), transparent 22%),
+        linear-gradient(180deg, #2f3b44 0%, #1b232c 100%);
       color: var(--text);
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 18px 10px;
       overflow-x: hidden;
-      position: relative;
-      isolation: isolate;
-      background:
-        radial-gradient(1000px 600px at 0% 0%, rgba(44,125,240,.18), transparent 55%),
-        radial-gradient(900px 600px at 100% 0%, rgba(29,185,84,.12), transparent 52%),
-        linear-gradient(135deg, #040b14 0%, #081425 32%, #0b1f38 68%, #0a3650 100%);
     }
 
-    body::before,
-    body::after{
+    body::before {
       content: "";
       position: fixed;
-      pointer-events: none;
-      z-index: -1;
-      filter: blur(30px);
-      opacity: .7;
-    }
-
-    body::before{
-      width: 320px;
-      height: 320px;
-      top: 5%;
-      left: -90px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(44,125,240,.28) 0%, rgba(44,125,240,0) 68%);
-      animation: floatGlow1 12s ease-in-out infinite;
-    }
-
-    body::after{
-      width: 360px;
-      height: 360px;
-      right: -120px;
-      bottom: 4%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(29,185,84,.20) 0%, rgba(29,185,84,0) 68%);
-      animation: floatGlow2 14s ease-in-out infinite;
-    }
-
-    .bg-grid{
-      position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: -1;
-      opacity: .08;
-      background-image:
-        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size: 38px 38px;
-      mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
-      animation: gridMove 18s linear infinite;
+      background: linear-gradient(120deg, rgba(255,255,255,.02), transparent 30%, transparent 70%, rgba(255,255,255,.03));
+      z-index: 0;
     }
 
-    .bg-lines{
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .bg-lines::before,
-    .bg-lines::after{
-      content: "";
-      position: absolute;
-      width: 140%;
-      height: 1px;
-      left: -20%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-    }
-
-    .bg-lines::before{
-      top: 22%;
-      transform: rotate(-8deg);
-      animation: lineRun 10s linear infinite;
-    }
-
-    .bg-lines::after{
-      top: 72%;
-      transform: rotate(-6deg);
-      animation: lineRun 13s linear infinite reverse;
-    }
-
-    main.container{
-      width: 100%;
-      max-width: 640px;
-      position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.07));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      padding: 20px 16px;
-      backdrop-filter: blur(22px) saturate(145%);
-      -webkit-backdrop-filter: blur(22px) saturate(145%);
-      overflow: hidden;
-    }
-
-    main.container::before{
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.03), rgba(29,185,84,.18));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    main.container::after{
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(450px 140px at 18% 0%, rgba(255,255,255,.08), transparent 60%),
-        radial-gradient(350px 180px at 100% 100%, rgba(29,185,84,.06), transparent 60%);
-      pointer-events: none;
-    }
-
-    header{
-      text-align: center;
-      padding: 4px 4px 2px;
+    .page {
       position: relative;
       z-index: 1;
+      min-height: 100vh;
+      padding: 26px;
     }
 
-    .profile-wrap{
-      width: 78px;
-      height: 78px;
-      margin: 0 auto 12px;
-      padding: 6px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.04));
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow: 0 14px 32px rgba(0,0,0,.20);
+    .shell {
+      max-width: var(--container);
+      margin: 0 auto;
+      min-height: calc(100vh - 52px);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
+        rgba(17,26,37,.72);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 38px;
+      overflow: hidden;
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      position: relative;
     }
 
-    .profile-img{
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.06), transparent 40%, rgba(109,255,101,.06));
+      pointer-events: none;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--green), var(--green-2));
+      box-shadow: 0 10px 28px rgba(109,255,101,.24);
+      position: relative;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      background: #0f1720;
+      border-radius: 999px;
+    }
+
+    .brand-mark::before {
+      width: 14px;
+      height: 26px;
+      left: 13px;
+      top: 8px;
+      transform: skew(-16deg);
+    }
+
+    .brand-mark::after {
+      width: 22px;
+      height: 8px;
+      left: 10px;
+      top: 17px;
+      transform: rotate(-25deg);
+    }
+
+    .brand span {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-size: .98rem;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(180deg, var(--green), var(--green-2));
+      color: #09110d;
+      text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 18px;
+      font-weight: 800;
+      box-shadow: 0 14px 34px rgba(109,255,101,.22);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      padding: 30px 32px 34px;
+      display: grid;
+      align-items: stretch;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-media img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+      filter: brightness(.58) saturate(.88);
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(10,14,20,.74) 0%, rgba(10,14,20,.34) 40%, rgba(10,14,20,.24) 100%),
+        linear-gradient(180deg, rgba(10,14,20,.08) 0%, rgba(10,14,20,.08) 55%, rgba(10,14,20,.5) 100%);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 24px;
+      min-height: 660px;
+      align-items: stretch;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px 0 120px;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      width: max-content;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.84);
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .eyebrow .pulse {
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      object-fit: contain;
-      background: rgba(255,255,255,.96);
+      background: var(--green);
+      box-shadow: 0 0 0 0 rgba(109,255,101,.65);
+      animation: pulse 2s infinite;
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 9vw, 8.2rem);
+      line-height: .88;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      max-width: 880px;
+      text-wrap: balance;
+    }
+
+    .hero h1 span {
       display: block;
+      color: rgba(255,255,255,.96);
     }
 
-    h1{
-      margin: 4px 0 6px;
-      font-size: 18px;
-      letter-spacing: .16em;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .description{
-      margin: 0 auto 12px;
-      max-width: 56ch;
-      font-size: 12.6px;
+    .hero p {
+      margin-top: 22px;
+      max-width: 560px;
+      font-size: 1.05rem;
+      line-height: 1.75;
       color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 18px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, var(--green), var(--green-2));
+      color: #08100c;
+      box-shadow: 0 14px 28px rgba(109,255,101,.18);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(12px);
+    }
+
+    .metrics {
+      position: absolute;
+      left: 0;
+      bottom: 18px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      max-width: 760px;
+    }
+
+    .metric {
+      min-width: 180px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 24px rgba(0,0,0,.14);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      color: rgba(255,255,255,.74);
+      font-size: .95rem;
       line-height: 1.45;
     }
 
-    .divider{
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-      margin: 14px 0 6px;
+    .hero-right {
       position: relative;
-      z-index: 1;
-    }
-
-    section{
-      margin-top: 14px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-title{
       display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(235,244,255,.76);
-      margin: 16px 4px 10px;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding-top: 36px;
     }
 
-    .section-title .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #28e76b;
-      position: relative;
-      flex: 0 0 auto;
-      box-shadow:
-        0 0 6px rgba(40,231,107,.55),
-        0 0 14px rgba(40,231,107,.25);
-      animation: pulseDotSoft 2.4s ease-in-out infinite;
-    }
-
-    .section-title .dot::before{
-      content: "";
+    .floating-card,
+    .info-panel,
+    .water-card,
+    .social-bar {
       position: absolute;
-      inset: -7px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(40,231,107,.20) 0%, rgba(40,231,107,0) 72%);
-      animation: pulseRingSoft 2.4s ease-out infinite;
-    }
-
-    .section-title .dot::after{
-      content: "";
-      position: absolute;
-      inset: -13px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(40,231,107,.10) 0%, rgba(40,231,107,0) 76%);
-      animation: pulseRingSoft 2.4s ease-out infinite .5s;
-    }
-
-    .grid{
-      display: grid;
-      gap: 10px;
-    }
-
-    @media (min-width: 700px){
-      .grid.two-col{
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .item{
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: var(--pad);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-      border: 1px solid rgba(255,255,255,.10);
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
-      min-width: 0;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      overflow: hidden;
-    }
-
-    .item::before{
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.05) 35%, transparent 70%);
-      transform: translateX(-120%);
-      transition: transform .8s ease;
-      pointer-events: none;
-    }
-
-    .item:hover::before{
-      transform: translateX(120%);
-    }
-
-    .item:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: var(--shadow-soft);
-      background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.08));
-    }
-
-    .open{
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .icon{
-      width: var(--icon);
-      height: var(--icon);
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.10);
-      flex: 0 0 auto;
-      font-size: 16px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-    }
-
-    .meta{
-      flex: 1;
-      min-width: 0;
-    }
-
-    .meta .title{
-      font-weight: 600;
-      font-size: 13.6px;
-      margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: #f8fbff;
-    }
-
-    .meta .hint{
-      margin: 3px 0 0;
-      font-size: 11.4px;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .actions{
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex: 0 0 auto;
-    }
-
-    .copy-btn{
-      width: var(--tap);
-      height: var(--tap);
-      border-radius: 11px;
+      background: rgba(255,255,255,.1);
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.08);
-      color: #fff;
-      cursor: pointer;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0,0,0,.20);
+    }
+
+    .floating-card {
+      top: 52px;
+      right: 10px;
+      width: 230px;
+      padding: 18px;
+      border-radius: 24px;
+    }
+
+    .floating-card small,
+    .info-panel small,
+    .water-card small {
+      display: block;
+      color: rgba(255,255,255,.62);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .72rem;
+      margin-bottom: 8px;
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 2.3rem;
+      letter-spacing: -0.06em;
+      margin-bottom: 8px;
+    }
+
+    .floating-card p,
+    .info-panel p,
+    .water-card p {
+      margin: 0;
+      font-size: .94rem;
+      line-height: 1.6;
+      max-width: none;
+      color: rgba(255,255,255,.74);
+    }
+
+    .info-panel {
+      right: 42px;
+      bottom: 164px;
+      width: 300px;
+      padding: 22px;
+      border-radius: 26px;
+    }
+
+    .info-panel .badge {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 16px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(109,255,101,.15);
+      border: 1px solid rgba(109,255,101,.22);
+      color: #caffc7;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .water-card {
+      right: 0;
+      bottom: 16px;
+      width: 270px;
+      padding: 22px;
+      border-radius: 28px;
+    }
+
+    .water-mark {
+      width: 84px;
+      height: 84px;
+      border-radius: 24px;
+      margin-top: 18px;
       display: grid;
       place-items: center;
-      font-size: 15px;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
-      user-select: none;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      font-size: 2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.14);
     }
 
-    .copy-btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(29,185,84,.40);
-      background: rgba(255,255,255,.12);
-      box-shadow: 0 10px 20px rgba(29,185,84,.10);
+    .social-bar {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 18px;
+      display: flex;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 999px;
     }
 
-    .arrow{
-      color: rgba(255,255,255,.56);
-      font-size: 16px;
-      padding: 0 2px;
-      user-select: none;
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(109,255,101,.9);
+      color: #0a130d;
+      font-weight: 800;
     }
 
-    .copy-btn:focus-visible,
-    .item:focus-within{
-      outline: 3px solid rgba(44,125,240,.18);
-      outline-offset: 2px;
+    .bottom-strip {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 26px;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 280px 1fr 280px;
+      gap: 18px;
+      align-items: end;
     }
 
-    .item.sunbolt-flex{
-      background: linear-gradient(135deg, var(--green-soft-1), var(--green-soft-2)), rgba(255,255,255,.05);
-      border-color: var(--green-border);
+    .mini-card,
+    .cta-bar,
+    .glass-note {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 44px rgba(0,0,0,.18);
     }
 
-    .item.sunbolt-flex:hover{
-      border-color: rgba(29,185,84,.42);
-      box-shadow: 0 14px 30px var(--green-glow);
+    .mini-card {
+      border-radius: 26px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr 82px;
+      gap: 16px;
+      align-items: end;
+      min-height: 150px;
     }
 
-    .item.sunbolt{
-      background: linear-gradient(135deg, rgba(12,88,201,.14), rgba(44,125,240,.08)), rgba(255,255,255,.05);
-      border-color: var(--blue-border);
+    .mini-card h3,
+    .glass-note h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 12px;
     }
 
-    .item.sunbolt:hover{
-      border-color: rgba(44,125,240,.42);
-      box-shadow: 0 14px 30px var(--blue-glow);
+    .mini-card a,
+    .glass-note a {
+      color: #8dff88;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
     }
 
-    footer{
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      text-align: center;
-      font-size: 11.5px;
-      color: rgba(235,244,255,.58);
-      position: relative;
-      z-index: 1;
-      letter-spacing: .04em;
+    .mini-figure {
+      width: 82px;
+      height: 108px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      border: 1px solid rgba(255,255,255,.14);
     }
 
-    @media (max-width: 520px){
-      main.container{
-        padding: 16px 12px;
-        border-radius: 20px;
+    .cta-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 999px;
+      min-height: 76px;
+    }
+
+    .cta-bar input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1rem;
+      padding: 0 14px;
+    }
+
+    .cta-bar input::placeholder { color: rgba(255,255,255,.55); }
+
+    .cta-bar button {
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(180deg, var(--green), var(--green-2));
+      color: #09110d;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 999px;
+      min-width: 190px;
+    }
+
+    .glass-note {
+      border-radius: 26px;
+      padding: 20px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .section-preview {
+      padding: 38px 32px 42px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .section-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-preview-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-preview-header p {
+      max-width: 560px;
+      color: rgba(255,255,255,.7);
+      line-height: 1.7;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      padding: 26px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border: 1px solid rgba(255,255,255,.10);
+      min-height: 220px;
+    }
+
+    .service-card .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+      background: rgba(109,255,101,.12);
+      border: 1px solid rgba(109,255,101,.18);
+    }
+
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      font-size: .98rem;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(109,255,101,.55); }
+      70% { box-shadow: 0 0 0 14px rgba(109,255,101,0); }
+      100% { box-shadow: 0 0 0 0 rgba(109,255,101,0); }
+    }
+
+    @media (max-width: 1200px) {
+      .hero-grid,
+      .bottom-strip,
+      .cards { grid-template-columns: 1fr; }
+
+      .hero { min-height: auto; padding-bottom: 260px; }
+      .hero-left { padding-bottom: 40px; }
+      .hero-right { min-height: 380px; }
+      .bottom-strip { position: relative; left: auto; right: auto; bottom: auto; margin-top: 18px; }
+      .social-bar { left: auto; right: 20px; transform: none; }
+    }
+
+    @media (max-width: 860px) {
+      .page { padding: 14px; }
+      .shell { min-height: auto; border-radius: 26px; }
+      .navbar {
+        flex-wrap: wrap;
+        padding: 18px 18px 10px;
       }
-
-      .profile-wrap{
-        width: 72px;
-        height: 72px;
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 14px;
+        padding-top: 8px;
+        overflow-x: auto;
       }
-
-      h1{
-        font-size: 16px;
-      }
-
-      .description{
-        font-size: 12px;
-      }
-
-      :root{
-        --tap: 38px;
-        --icon: 34px;
-        --pad: 11px;
-      }
-
-      .meta .hint{
-        display: none;
-      }
+      .hero,
+      .section-preview { padding-left: 18px; padding-right: 18px; }
+      .hero h1 { font-size: clamp(3rem, 18vw, 5rem); }
+      .metrics { position: relative; bottom: auto; margin-top: 24px; }
+      .hero-right { min-height: 440px; }
+      .floating-card { width: 200px; right: 0; }
+      .info-panel { width: 240px; right: 10px; }
+      .water-card { width: 220px; }
+      .cta-bar { border-radius: 24px; flex-direction: column; align-items: stretch; }
+      .cta-bar button { width: 100%; }
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .item, .copy-btn, body::before, body::after, .bg-grid, .bg-lines::before, .bg-lines::after,
-      .section-title .dot, .section-title .dot::before, .section-title .dot::after{
-        transition: none !important;
-        animation: none !important;
+    @media (max-width: 560px) {
+      .brand span { font-size: 1.05rem; }
+      .nav-cta { width: 100%; justify-content: center; }
+      .hero { padding-top: 12px; }
+      .eyebrow { font-size: .85rem; }
+      .hero p { font-size: .96rem; }
+      .metric { min-width: 100%; }
+      .hero-right {
+        min-height: 500px;
+        padding-top: 16px;
       }
-
-      .item:hover{
+      .floating-card,
+      .info-panel,
+      .water-card,
+      .social-bar {
+        position: static;
+        width: 100%;
         transform: none;
+        margin-top: 14px;
       }
-    }
-
-    @keyframes floatGlow1{
-      0%,100%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(18px,14px) scale(1.05); }
-    }
-
-    @keyframes floatGlow2{
-      0%,100%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(-22px,-14px) scale(1.06); }
-    }
-
-    @keyframes gridMove{
-      0%{ transform: translateY(0); }
-      100%{ transform: translateY(38px); }
-    }
-
-    @keyframes lineRun{
-      0%{ transform: translateX(-10%) rotate(-8deg); opacity: .20; }
-      50%{ opacity: .42; }
-      100%{ transform: translateX(10%) rotate(-8deg); opacity: .20; }
-    }
-
-    @keyframes pulseDotSoft{
-      0%, 100%{
-        transform: scale(1);
-        box-shadow:
-          0 0 6px rgba(40,231,107,.55),
-          0 0 14px rgba(40,231,107,.25);
-      }
-      50%{
-        transform: scale(1.08);
-        box-shadow:
-          0 0 9px rgba(40,231,107,.75),
-          0 0 20px rgba(40,231,107,.35);
-      }
-    }
-
-    @keyframes pulseRingSoft{
-      0%{
-        transform: scale(.88);
-        opacity: .55;
-      }
-      70%{
-        transform: scale(1.28);
-        opacity: 0;
-      }
-      100%{
-        transform: scale(1.28);
-        opacity: 0;
-      }
+      .social-bar { justify-content: center; }
+      .mini-card { grid-template-columns: 1fr; }
+      .section-preview-header { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
-
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-lines"></div>
+  <div class="page">
+    <div class="shell">
+      <header class="navbar">
+        <div class="brand">
+          <div class="brand-mark"></div>
+          <span>Sunbolt Energy</span>
+        </div>
 
-  <main class="container">
-    <header>
-      <div class="profile-wrap">
-        <img src="123.JPG" alt="Logo Sunbolt Flex" class="profile-img" />
-      </div>
-      <h1>INFORMAÇÕES INTERNAS</h1>
-      <p class="description">
-        Central rápida de acessos, relatórios, formulários e ferramentas da operação Sunbolt.
-      </p>
-    </header>
+        <ul class="nav-links">
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Soluções</a></li>
+          <li><a href="#">Solar</a></li>
+          <li><a href="#">Baterias</a></li>
+          <li><a href="#">Projetos</a></li>
+        </ul>
 
-    <div class="divider"></div>
+        <a class="nav-cta" href="#contato">Solicitar proposta ↗</a>
+      </header>
 
-    <section>
-      <div class="section-title"><span class="dot"></span> Usinas c/ Clientes</div>
-      <div class="grid">
+      <section class="hero">
+        <div class="hero-media">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1800&q=80" alt="Casa moderna com painéis solares" />
+        </div>
 
-        <div class="item sunbolt-flex">
-          <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9" target="_blank" rel="noopener">
-            <div class="icon">🌿</div>
-            <div class="meta">
-              <p class="title">Informações Sunbolt Flex</p>
-              <p class="hint">Relatório Power BI</p>
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="eyebrow">
+              <span class="pulse"></span>
+              Energia solar, baterias e performance real
             </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link"
-              onclick="copiarLink(this, 'https://app.powerbi.com/view?r=eyJrIjoiYmY1ODI1N2QtMTZhMS00MDgzLWE1MmUtNjM1MjgzM2U4MjMwIiwidCI6ImIxOTMzYjdhLTAzOGMtNDY3Ny1hODU1LWI4NDhkMDUyMTg5MCJ9')">⧉</button>
-            <span class="arrow">›</span>
+
+            <h1>
+              <span>Bright</span>
+              <span>Energy</span>
+            </h1>
+
+            <p>
+              Projetamos soluções energéticas premium para empresas e residências que querem reduzir custos, aumentar autonomia e elevar o padrão da operação com geração solar e armazenamento inteligente.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contato" class="btn-primary">Falar com especialista</a>
+              <a href="#solucoes" class="btn-secondary">Ver soluções</a>
+            </div>
+
+            <div class="metrics">
+              <div class="metric">
+                <strong>+35%</strong>
+                <span>Mais previsibilidade energética com sistemas híbridos e controle inteligente.</span>
+              </div>
+              <div class="metric">
+                <strong>24/7</strong>
+                <span>Continuidade operacional com backup por baterias e monitoramento em tempo real.</span>
+              </div>
+              <div class="metric">
+                <strong>IPX8</strong>
+                <span>Soluções robustas, preparadas para desempenho, proteção e durabilidade.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="floating-card">
+              <small>Sun Power</small>
+              <strong>50W</strong>
+              <p>Arquitetura visual clean com foco em alto valor percebido e tecnologia sustentável.</p>
+            </div>
+
+            <div class="info-panel">
+              <small>Eficiência inteligente</small>
+              <p>Integração entre energia solar, banco de baterias e gestão digital para manter sua operação estável e financeiramente eficiente.</p>
+              <div class="badge">Energia com controle total</div>
+            </div>
+
+            <div class="water-card">
+              <small>Water Resistant</small>
+              <h3>Durabilidade premium</h3>
+              <p>Componentes e estrutura pensados para longa vida útil e performance consistente.</p>
+              <div class="water-mark">💧</div>
+            </div>
+
+            <div class="social-bar">
+              <div class="social-icon">in</div>
+              <div class="social-icon">f</div>
+              <div class="social-icon">ig</div>
+            </div>
           </div>
         </div>
 
-        <div class="item sunbolt">
-          <a class="open" href="https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890" target="_blank" rel="noopener">
-            <div class="icon">⚡</div>
-            <div class="meta">
-              <p class="title">Informações Sunbolt Energy</p>
-              <p class="hint">Relatório Power BI</p>
+        <div class="bottom-strip">
+          <div class="mini-card">
+            <div>
+              <h3>Solução ecoeficiente para um novo padrão de consumo</h3>
+              <a href="#solucoes">Descobrir serviços</a>
             </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link"
-              onclick="copiarLink(this, 'https://app.powerbi.com/reportEmbed?reportId=72c25704-ef1e-448e-83b4-0a25d8d5aa2b&autoAuth=true&ctid=b1933b7a-038c-4677-a855-b848d0521890')">⧉</button>
-            <span class="arrow">›</span>
+            <div class="mini-figure">⚡</div>
+          </div>
+
+          <form class="cta-bar" id="contato">
+            <input type="email" placeholder="Digite seu e-mail" />
+            <button type="submit">Get Started →</button>
+          </form>
+
+          <div class="glass-note">
+            <div>
+              <small style="display:block;color:rgba(255,255,255,.58);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;margin-bottom:8px;">Sunbolt premium</small>
+              <h3>Energia solar com armazenamento e gestão inteligente</h3>
+            </div>
+            <a href="#solucoes">Saiba mais</a>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title"><span class="dot"></span> Digital Grid</div>
-      <div class="grid">
-
-        <div class="item">
-          <a class="open" href="https://gestao.dg.energy/login/" target="_blank" rel="noopener">
-            <div class="icon">📈</div>
-            <div class="meta">
-              <p class="title">Acesso sistema</p>
-              <p class="hint">Portal de gestão</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://gestao.dg.energy/login/')">⧉</button>
-            <span class="arrow">›</span>
+      <section class="section-preview" id="solucoes">
+        <div class="section-preview-header">
+          <div>
+            <h2>Soluções pensadas para performance</h2>
           </div>
+          <p>
+            O visual segue a linha premium da referência que você enviou, com glassmorphism, tipografia forte, profundidade visual e blocos estratégicos para valorizar a marca.
+          </p>
         </div>
 
-        <div class="item">
-          <a class="open" href="https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217" target="_blank" rel="noopener">
-            <div class="icon">🎥</div>
-            <div class="meta">
-              <p class="title">Vídeo Aula (1) Cadastros e Criação de rateio</p>
-              <p class="hint">Notion</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link"
-              onclick="copiarLink(this, 'https://dgenergy.notion.site/Cadastros-e-Cria-o-de-rateio-142339c9881880338705e2cb8aa05217')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
+        <div class="cards">
+          <article class="service-card">
+            <div class="icon">☀️</div>
+            <h3>Geração Solar</h3>
+            <p>Sistemas fotovoltaicos com estética refinada, alta eficiência e apresentação comercial de alto padrão.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🔋</div>
+            <h3>Armazenamento</h3>
+            <p>Integração com baterias para backup, autonomia e estabilidade energética em momentos críticos.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">📊</div>
+            <h3>Gestão Inteligente</h3>
+            <p>Monitoramento, controle e leitura de performance com foco em redução de custos e previsibilidade.</p>
+          </article>
         </div>
-
-        <div class="item">
-          <a class="open" href="https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7" target="_blank" rel="noopener">
-            <div class="icon">🎬</div>
-            <div class="meta">
-              <p class="title">Vídeo Aula (2) Faturamento e Emissão de Relatórios</p>
-              <p class="hint">Notion</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link"
-              onclick="copiarLink(this, 'https://dgenergy.notion.site/Faturamento-e-Emiss-o-de-Relat-rios-142339c98818800fac82e1389732d4f7')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title"><span class="dot"></span> Simulador</div>
-      <div class="grid">
-        <div class="item">
-          <a class="open" href="https://sunboltflex.github.io/simulador-energia-15/" target="_blank" rel="noopener">
-            <div class="icon">🧮</div>
-            <div class="meta">
-              <p class="title">Simulador Clientes</p>
-              <p class="hint">Calculadora</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://sunboltflex.github.io/simulador-energia-15/')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title"><span class="dot"></span> Cadastros</div>
-      <div class="grid">
-
-        <div class="item">
-          <a class="open" href="https://forms.gle/x1ACmqLZTRzNP8ZH8" target="_blank" rel="noopener">
-            <div class="icon">🧾</div>
-            <div class="meta">
-              <p class="title">Cadastro de Clientes (15% a 20%)</p>
-              <p class="hint">Google Forms</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/x1ACmqLZTRzNP8ZH8')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-
-        <div class="item">
-          <a class="open" href="https://forms.gle/waLHTt6Ps1CEyJkU6" target="_blank" rel="noopener">
-            <div class="icon">📝</div>
-            <div class="meta">
-              <p class="title">Cadastro de Clientes (25%)</p>
-              <p class="hint">Google Forms</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/waLHTt6Ps1CEyJkU6')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-
-        <div class="item">
-          <a class="open" href="https://forms.gle/HnehrXA6AzY8tNuu6" target="_blank" rel="noopener">
-            <div class="icon">🏭</div>
-            <div class="meta">
-              <p class="title">Cadastro de Usinas</p>
-              <p class="hint">Google Forms</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/HnehrXA6AzY8tNuu6')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title"><span class="dot"></span> Vendedores</div>
-      <div class="grid two-col">
-
-        <div class="item"><a class="open" href="https://forms.gle/wByNg74Fn6xMuyFb9" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Denis</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/wByNg74Fn6xMuyFb9')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/T2BUixaqmfeRuN5B8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Luan</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/T2BUixaqmfeRuN5B8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/24QAtQ4rWqdQYGEW6" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Edilson</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/24QAtQ4rWqdQYGEW6')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/AUPEafG4n1zGEbHQ8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Flávio</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/AUPEafG4n1zGEbHQ8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/zgAhvNk1YHDmD4Fh8" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Janaina Carla</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/zgAhvNk1YHDmD4Fh8')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/YxwZpTMivf8NkKTaA" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Celiane - Quixadá/CE</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/YxwZpTMivf8NkKTaA')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/ZRWKmtJSdkuwRfrQ6" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Weber</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/ZRWKmtJSdkuwRfrQ6')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/LSbwc9zinov51cmv7" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Thyago Soares</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/LSbwc9zinov51cmv7')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-        <div class="item"><a class="open" href="https://forms.gle/4whhKxnWh1NP7W6e7" target="_blank" rel="noopener"><div class="icon">👤</div><div class="meta"><p class="title">Elton</p><p class="hint">Formulário individual</p></div></a><div class="actions"><button class="copy-btn" onclick="copiarLink(this,'https://forms.gle/4whhKxnWh1NP7W6e7')" aria-label="Copiar link">⧉</button><span class="arrow">›</span></div></div>
-
-      </div>
-    </section>
-
-    <section>
-      <div class="section-title"><span class="dot"></span> Avaliação</div>
-      <div class="grid">
-        <div class="item">
-          <a class="open" href="https://forms.gle/N32WEnn7UAA8E4jR8" target="_blank" rel="noopener">
-            <div class="icon">⭐</div>
-            <div class="meta">
-              <p class="title">Avaliação dos Vendedores</p>
-              <p class="hint">Google Forms</p>
-            </div>
-          </a>
-          <div class="actions">
-            <button class="copy-btn" aria-label="Copiar link" onclick="copiarLink(this, 'https://forms.gle/N32WEnn7UAA8E4jR8')">⧉</button>
-            <span class="arrow">›</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>© 2025 · Sunbolt Tech</footer>
-  </main>
-
-  <script>
-    function copiarLink(botao, link) {
-      if (!navigator.clipboard) {
-        const temp = document.createElement("textarea");
-        temp.value = link;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand("copy");
-        document.body.removeChild(temp);
-        feedback(botao);
-        return;
-      }
-
-      navigator.clipboard.writeText(link).then(() => feedback(botao));
-    }
-
-    function feedback(botao){
-      const original = botao.textContent;
-      botao.textContent = "✅";
-      botao.style.borderColor = "rgba(29,185,84,.55)";
-      botao.style.background = "rgba(29,185,84,.18)";
-
-      setTimeout(() => {
-        botao.textContent = original;
-        botao.style.borderColor = "";
-        botao.style.background = "";
-      }, 1200);
-    }
-  </script>
+      </section>
+    </div>
+  </div>
 </body>
 </html>
